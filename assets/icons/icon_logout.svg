@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="42" fill="none" viewBox="0 0 41 42">
+  <g class="icon_logout">
+    <path fill="#F7F6CF" d="M1 1h40v40H1z"/>
+    <path stroke="#5784BA" stroke-width="2" d="M35.526 23.857c-1.608 9.977-8.187 17.061-17.045 17.142C8.605 41.09.549 31.346 1.02 20.047 1.468 9.274 9.334 1 18.48 1c9.147 0 13.305 5.714 17.046 15.238" class="Vector 2"/>
+    <path stroke="#5784BA" stroke-width="2" d="M20.79 20.048H41" class="Line 36"/>
+  </g>
+</svg>

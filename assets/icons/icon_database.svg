@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="42" fill="none" viewBox="0 0 41 42">
+  <g class="icon_database">
+    <path fill="#F7F6CF" d="M0 1h40v40H0z"/>
+    <path stroke="#5784BA" stroke-width="2" d="M1 25.575c0 8.192 38.977 7.228 38.977 0M.999 16.42c0 8.191 38.978 7.227 38.978 0M1.004 35.212c0 8.192 38.977 7.228 38.977 0M1.004 9.316c-.5-11.082 37.978-10.6 38.977-1.445 1 9.155-38.651 8.666-38.977 1.445Z" class="Vector 1"/>
+    <path stroke="#5784BA" stroke-width="2" d="M1 8.71v27.948" class="Line 34"/>
+    <path stroke="#5784BA" stroke-width="2" d="M39.977 7.746v27.948" class="Line 35"/>
+    <ellipse cx="36.479" cy="15.938" fill="#5784BA" class="Ellipse 10" rx=".5" ry=".482"/>
+    <ellipse cx="36.479" cy="24.611" fill="#5784BA" class="Ellipse 11" rx=".5" ry=".482"/>
+    <ellipse cx="36.479" cy="33.285" fill="#5784BA" class="Ellipse 12" rx=".5" ry=".482"/>
+  </g>
+</svg>

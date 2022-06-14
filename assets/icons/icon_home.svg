@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+  <g class="icon_home">
+    <path fill="#F7F6CF" d="M0 0h40v40H0z"/>
+    <rect width="11.111" height="21.395" x="4.444" y="18.605" fill="#5784BA" class="Rectangle 116" rx="1"/>
+    <rect width="10.37" height="21.395" x="25.185" y="18.605" fill="#5784BA" class="Rectangle 117" rx="1"/>
+    <rect width="31.111" height="14.884" x="4.444" y="10.232" fill="#5784BA" class="Rectangle 118" rx="1"/>
+    <path fill="#5784BA" d="M19.435.387a1 1 0 0 1 1.13 0l14.09 9.648c.811.556.418 1.825-.565 1.825H5.91c-.983 0-1.376-1.27-.565-1.825L19.435.387Z" class="Polygon 6"/>
+  </g>
+</svg>

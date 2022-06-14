@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+  <g class="icon_settings">
+    <path fill="#F7F6CF" d="M0 0h40v40H0z"/>
+    <circle cx="20" cy="20" r="17.647" fill="#5784BA" class="Ellipse 13"/>
+    <circle cx="20" cy="20" r="4.706" fill="#F7F6CF" class="Ellipse 15"/>
+    <path fill="#5784BA" d="m8.944 3.53 7.487 7.486-5.414 5.414L3.53 8.943z" class="Rectangle 120"/>
+    <path fill="#5784BA" d="m28.943 22.353 9.15 9.15-5.413 5.414-9.15-9.15z" class="Rectangle 121"/>
+    <path fill="#5784BA" d="M14.475 29.266 7.423 35.5l-5.07-5.737 7.051-6.233z" class="Rectangle 122"/>
+    <path fill="#5784BA" d="m38.296 10.442-9.696 8.57-5.07-5.735 9.695-8.571z" class="Rectangle 123"/>
+    <path fill="#5784BA" d="M40 24.706H25.882v-7.059H40v7.059Z" class="Rectangle 124"/>
+    <path fill="#5784BA" d="M10.588 24.706H0v-7.059h10.588v7.059Z" class="Rectangle 125"/>
+    <path fill="#5784BA" d="M16.47 14.118V0h7.06v14.118h-7.06Z" class="Rectangle 126"/>
+    <path fill="#5784BA" d="M16.47 40V25.882h7.06V40h-7.06Z" class="Rectangle 127"/>
+  </g>
+</svg>

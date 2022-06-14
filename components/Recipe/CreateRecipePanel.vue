@@ -1,0 +1,351 @@
+<template>
+    <div class='createRecipe-container'>
+        <div class='create-recipe-header'>
+            <h2>Ajouter une recette</h2>
+            <div class='buttons'>
+                <button id='create-button' class='button' @click='postRecipe'>Publier</button>
+                <button id='preview-button' class='button'>Prévisualiser</button>
+            </div>
+        </div>
+        <form enctype='multipart/form-data' @submit.prevent='submitForm'>
+            <label>
+                <span>Titre :</span>
+                <input 
+                    id='title'
+                    type='text' 
+                    placeholder='Gratin de citrouille' 
+                    name='title'
+                    @change='storeTitle'
+                />
+            </label>
+            <label>
+                <span>Description :</span>
+                <textarea 
+                    id='description'
+                    type='text' 
+                    placeholder='Une souple facile et simple à réaliser...' 
+                    name='description'
+                    @change='storeDescription'
+                />
+            </label>
+            <label>
+                <span>Catégorie :</span>
+                <input 
+                    id='category'
+                    type='text' 
+                    placeholder='Méditerranéen' 
+                    name='category' 
+                />
+                <img
+                    src='~assets/icons/icon-add.svg'
+                    alt='Icon add one'
+                    @click='storeCategory'
+                />
+            </label>
+            <label>
+                <span>Durée :</span>
+                <input 
+                    id='preparationTime'
+                    type='number' 
+                    placeholder='45' 
+                    name='preparationTime'
+                    @change='storePreparationTime'
+                />
+            </label>
+            <label>
+                <span>Ingrédients :</span>
+                <input 
+                    id='ingredient'
+                    type='text' 
+                    placeholder='Gratin de citrouille' 
+                    name='ingredient'
+                />
+                <img
+                    src='~assets/icons/icon-add.svg'
+                    alt='Icon add one'
+                    @click='storeIngredient'
+                />
+            </label>
+            <fieldset>
+                <legend>La recette est-elle :</legend>
+                <div>
+                    <input
+                        id='vegan'
+                        type='checkbox'
+                        name='vegan'
+                        @click='storeDiet'
+                    >
+                    <label class='diet-label' for='vegan'>vegan</label>
+                </div>
+                <div>
+                    <input
+                        id='porkFree'
+                        type='checkbox'
+                        name='porkFree'
+                        @click='storeDiet'
+                    >
+                    <label class='diet-label' for='porkFree'>sans porc</label>
+                </div>
+                <div>
+                    <input
+                        id='glutenFree'
+                        type='checkbox'
+                        name='glutenFree'
+                        @click='storeDiet'
+                    >
+                    <label class='diet-label' for='glutenFree'>sans gluten</label>
+                </div>
+            </fieldset>
+            <label>
+                <span>Etapes :</span>
+                <textarea 
+                    id='step'
+                    type='text' 
+                    placeholder='Découper les légumes en dés...' 
+                    name='step' 
+                />
+                <img
+                    src='~assets/icons/icon-add.svg'
+                    alt='Icon add one'
+                    @click='storeStep'
+                />
+            </label>
+            <label>
+                <span>Options :</span>
+                <textarea 
+                    id='option'
+                    type='text' 
+                    placeholder='Ajouter un topping de cacahuètes en fin de cuisson...' 
+                    name='option' 
+                />
+                <img
+                    src='~assets/icons/icon-add.svg'
+                    alt='Icon add one'
+                    @click='storeOption'
+                />
+            </label>
+            <label>
+                <span>Ustensiles :</span>
+                <input 
+                    id='tool'
+                    type='text' 
+                    placeholder='Gratin de citrouille' 
+                    name='tool' 
+                />
+                <img
+                    src='~assets/icons/icon-add.svg'
+                    alt='Icon add one'
+                    @click='storeTool'
+                />
+            </label>
+            <label id='uploadFile-label'>
+                <span>Photo :</span>
+                <input 
+                    id='photo'
+                    type='file'
+                    name='photo' 
+                    accept='image/png, image/jpg, image/jpeg'
+                    @change='storePhoto'
+                />
+                <img
+                    src='~assets/icons/icon_uploadFile.png'
+                    alt='File uploading icon'
+                >
+            </label>
+        </form>
+    </div>
+</template>
+
+<script>
+    import { v4 as uuidv4 } from 'uuid'
+
+    export default {        
+        created() {
+            // mutation, though unnused variable, is needed as parameter to subscribe()
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            this.unsubscribe = this.$store.subscribe((mutation, state) => {
+                this.recipe = state.recipe.recipe.title
+            });
+        },
+
+        methods: {
+            storeTitle (e) {
+                this.$store.commit('recipe/storeTitle', e.target.value)
+            },
+
+            storeDescription (e) {
+                this.$store.commit('recipe/storeDescription', e.target.value)
+            },
+            
+            storeCategory () {
+                const category = document.getElementById('category').value
+                this.$store.commit('recipe/storeCategory', category)
+            },
+            
+            storePreparationTime (e) {
+                this.$store.commit('recipe/storePreparationTime', e.target.value)
+            },
+
+            storeIngredient () {
+                const ingredient = document.getElementById('ingredient').value
+                this.$store.commit('recipe/storeIngredient', ingredient)
+            },
+
+            storeDiet (e) {
+                const diet = e.target.id
+                this.$store.commit('recipe/storeDiet', diet)
+            },
+
+            storeStep () {
+                const step = document.getElementById('step').value
+                this.$store.commit('recipe/storeStep', step)
+            },
+
+            storeOption () {
+                const option = document.getElementById('option').value
+                this.$store.commit('recipe/storeOption', option)
+            },
+
+            storeTool () {
+                const tool = document.getElementById('tool').value
+                this.$store.commit('recipe/storeTool', tool)
+            },
+
+            storePhoto (e) {
+                this.$store.commit('recipe/storePhoto', e.target.value)
+            },
+
+            postRecipe() {
+                const uuid = uuidv4()
+
+                this.$store.commit('recipe/setUuid', uuid)
+                const payload = this.$store.state.recipe.recipe
+
+                this.$axios.$post('/recipe', payload)
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                
+            }
+        }
+    }
+</script>
+
+<style lang='scss' scoped>
+    .createRecipe-container {
+        margin-left: 25vw;
+        
+        .create-recipe-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            h2 {
+                font-family: 'Barlow SemiCondensed';
+                font-size: 32px;
+                font-weight: bold;
+                text-align: center;
+            }
+        
+            .buttons {
+                .button {
+                    border-radius: 6px;
+                    width: 140px;
+                    height: 50px;
+                    border: none;
+                    font-family: 'Barlow Condensed';
+                    font-size: 22px;
+                    cursor: pointer;
+                }
+
+                #create-button {
+                    background-color: #5784BA;
+                }
+
+                #preview-button {
+                    margin-left: 14px;
+                    background-color: #F7F6CF;
+                }
+            }
+        }
+
+        form {
+            label:not(.diet-label) {
+                display: grid;
+                grid-template-columns: minmax(5vw, max-content) minmax(8vw, max-content) 20%;
+                place-items: center left;
+                margin-top: 24px;
+                font-family: 'Barlow Condensed';
+                font-size: 20px;
+                font-weight: bold;
+
+                
+
+                input, textarea {
+                    padding-left: 16px;
+                    background-color: #B6D8F2;
+                    border: none;
+                    border-radius: 6px;
+                    font-family: 'Barlow Light';
+                    font-size: 16px;
+                    margin: 4px 10px 0 6px;
+                }
+
+                textarea {
+                    padding: 16px;
+                    width: 300px;
+                }
+
+                input {
+                    width: 500px;
+                    height: 40px;
+                }
+
+                img {
+                    width: 34px;
+                    height: 34px;
+                    cursor: pointer;
+                }
+            }
+
+            fieldset {
+                margin-top: 18px;
+                
+                legend {
+                    margin-top: 24px;
+                    font-family: 'Barlow Condensed';
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+                   
+            }
+            #preparationTime, #category, #ingredients, #photo {
+                width: 150px;
+            }
+
+            #uploadFile-label {
+                display: grid;
+                grid-template-columns: 60px 60px;
+                place-items: center;
+                width: 140px;
+                height: 40px;
+                margin-left: 5.5vw;
+                padding-left: 16px;
+                background-color: #B6D8F2;
+                border: none;
+                border-radius: 6px;
+                font-family: 'Barlow Light';
+                font-size: 14px;
+                cursor: pointer;
+
+                input {
+                    display: none;
+                }
+            }
+        }
+        
+    }
+</style>
