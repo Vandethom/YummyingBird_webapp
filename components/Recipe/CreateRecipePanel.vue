@@ -141,17 +141,19 @@
             <label id='uploadFile-label'>
                 <span>Photo :</span>
                 <input 
-                    id='photo'
+                    id='imageUrl'
                     type='file'
-                    name='photo' 
+                    name='imageUrl' 
                     accept='image/png, image/jpg, image/jpeg'
-                    @change='storePhoto'
+                    @change='storeImageUrl'
                 />
                 <img
                     src='~assets/icons/icon_uploadFile.png'
                     alt='File uploading icon'
                 >
             </label>
+            
+            <button type='submit' id='create-button' class='button' @click='postRecipe'>Publier</button>
         </form>
     </div>
 </template>
@@ -211,17 +213,30 @@
                 this.$store.commit('recipe/storeTool', tool)
             },
 
-            storePhoto (e) {
-                this.$store.commit('recipe/storePhoto', e.target.value)
+            storeImageUrl (e) {
+                this.$store.commit('recipe/storeImageUrl', e.target.files[0])
             },
 
-            postRecipe() {
+            fileChanged (e) {
+                console.log('hey')
+                console.log('It should be there ::: ', e.target.files)
+            },
+
+            postRecipe(e) {
+                e.preventDefault()
+                
                 const uuid = uuidv4()
+
+                const recipeFormData = new FormData()
+
 
                 this.$store.commit('recipe/setUuid', uuid)
                 const payload = this.$store.state.recipe.recipe
+                Object.keys(payload).forEach(function(key) {
+                    recipeFormData.append(`${key}`, payload[key])
+                })
 
-                this.$axios.$post('/recipe', payload)
+                this.$axios.$post('/recipe', recipeFormData)
                     .then(function (response) {
                         console.log(response);
                     })
@@ -322,7 +337,7 @@
                 }
                    
             }
-            #preparationTime, #category, #ingredients, #photo {
+            #preparationTime, #category, #ingredients, #imageUrl {
                 width: 150px;
             }
 

@@ -16,7 +16,7 @@ export const state = {
         steps: [],
         options: [],
         tools: [],
-        photo: ''
+        imageUrl: ''
     }
 }
 
@@ -75,8 +75,8 @@ export const mutations = {
         state.recipe.tools.push(tool)
     },
 
-    storePhoto(state: any, photo: string) {
-        storeData('photo', photo, state)
+    storeImageUrl(state: any, imageUrl: string) {
+        storeData('imageUrl', imageUrl, state)
     },
     
     setUuid(state: any, uuid: string) {
