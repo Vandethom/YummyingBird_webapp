@@ -42,4 +42,11 @@
             }
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        .search-bar {
+            width: 85%;
+            margin-left: 0;
+        }
+    }
 </style>

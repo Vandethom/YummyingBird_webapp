@@ -75,4 +75,10 @@
             margin-top: 25px;
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        .side-panel-container {
+            width: 70px;
+        }
+    }
 </style>

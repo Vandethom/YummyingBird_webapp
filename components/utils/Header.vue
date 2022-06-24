@@ -1,9 +1,9 @@
 <template>
     <div class='header-container'>
         <div class="header-main-bar">
-            <BrandNameLogo />
+            <BrandNameLogo class='name-logo' />
             <SearchBar />
-            <AccountOptions />
+            <AccountOptions class='account-options' />
         </div>
         <hr />
     </div>
@@ -36,5 +36,18 @@ export default {
             width: 65vw;
             margin-left: 2vw;
         }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .header-container {
+                width: 80%;
+                
+                .header-main-bar{
+                    .name-logo, .account-options {
+                        display: none;
+                    }
+            }
+        }
+        
     }
 </style>

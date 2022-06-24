@@ -104,4 +104,11 @@
             }
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        .auth-modal {
+            width: 80%;
+            margin-top: 40px;
+        }
+    }
 </style>

@@ -153,7 +153,7 @@
                 >
             </label>
             
-            <button type='submit' id='create-button' class='button' @click='postRecipe'>Publier</button>
+            <button id='create-button' type='submit' class='button' @click='postRecipe'>Publier</button>
         </form>
     </div>
 </template>
@@ -215,11 +215,6 @@
 
             storeImageUrl (e) {
                 this.$store.commit('recipe/storeImageUrl', e.target.files[0])
-            },
-
-            fileChanged (e) {
-                console.log('hey')
-                console.log('It should be there ::: ', e.target.files)
             },
 
             postRecipe(e) {
