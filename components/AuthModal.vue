@@ -25,16 +25,34 @@
                     >
                 </span>
             </div>
+
+            <div class='signup-form'>
+                <input class='user-first-name' type='text' placeholder='Prénom'>
+                <input class='user-last-name' type='text' placeholder='Nom'>
+            </div>
+            
             <a href=''>mot de passe oublié</a>
             <button class='button-login' @click='login'>Connexion</button>
-            <button class='button-signup'>Inscription</button>
+            <button class='button-signup' @click='displaySignUpForm'>Inscription</button>
         </form>
     </div>
 </template>
 
 <script>
+    import { gsap } from "gsap"
+
     export default {
         methods: {
+            displaySignUpForm(e) {
+                e.preventDefault()
+
+                gsap.to('.signup-form', {
+                    'display': 'flex',
+                    'flex-direction': 'column',
+                    'margin-left': '-14px'
+                })
+            },
+            
             async login(e) {
                 e.preventDefault()
                 
@@ -86,6 +104,10 @@
             width: 60%;
             margin: auto;
             margin-top: 40px;
+
+            .signup-form {
+                display: none;
+            }
 
             .connexion-input {
                 margin: auto;
