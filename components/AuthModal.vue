@@ -3,8 +3,28 @@
         <h2>Connexion - Inscription</h2>
         <hr />
         <form>
-            <input id='user-mail' type='email' placeholder='email'>
-            <input id='user-password' type='password' placeholder='mot de passe'>
+            <div class='connexion-input'>
+                <input
+                    id='user-mail'
+                    type='email'
+                    placeholder='email'
+                >
+            </div>
+            <div class='connexion-input'>
+                <input
+                    id='user-password'
+                    type='password'
+                    placeholder='mot de passe'
+                >
+                <span>
+                    <img
+                        class='icon-visibility-on'
+                        src='../assets/icons/icon_visibility_on.svg'
+                        alt='icon eye open'
+                        @click='switchPasswordVisibility'
+                    >
+                </span>
+            </div>
             <a href=''>mot de passe oublié</a>
             <button class='button-login' @click='login'>Connexion</button>
             <button class='button-signup'>Inscription</button>
@@ -21,13 +41,23 @@
                 const email = document.getElementById( 'user-mail' ).value
                 const password = document.getElementById( 'user-password' ).value
                 
-                const login = await this.$axios.$post('/login', { email, password} )
+                const login = await this.$axios.$post( '/login', { email, password} )
 
                 delete login.user.password
 
                 this.$store.commit( 'auth/loggedInUser', login )
                 this.$router.push( '/' )
             },
+
+            switchPasswordVisibility() {
+                const passwordInput = document.getElementById( 'user-password' )
+
+                if ( passwordInput.type === 'password' ) {
+                    passwordInput.type = 'text'
+                } else {
+                    passwordInput.type = 'password'
+                }
+            }
         }
     }
 </script>
@@ -57,8 +87,22 @@
             margin: auto;
             margin-top: 40px;
 
+            .connexion-input {
+                margin: auto;
+                display: grid;
+                grid-template-columns: 265px 15px;
+                place-items: center;
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                    margin-left: -45px;
+                    cursor: pointer;
+                }
+            }
+
             input {
-                width: 220px;
+                width: 240px;
                 height: 40px;
                 border: none;
                 margin: auto;
