@@ -62,7 +62,7 @@
                 const email = document.getElementById( 'user-mail' ).value
                 const password = document.getElementById( 'user-password' ).value
                 
-                const login = await this.$axios.$post( '/login', { email, password} )
+                const login = await this.$axios.$post( 'api/login', { email, password} )
 
                 delete login.user.password
 
