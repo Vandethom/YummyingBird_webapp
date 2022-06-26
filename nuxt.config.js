@@ -41,12 +41,15 @@ export default {
   ],
 
   axios: {
-    baseURL: `https://yummying-api.herokuapp.com/`
+    baseURL: `https://yummying-api.herokuapp.com/`,
+    proxy: true,
+    proxyHeaders: false,
+    credentials: false
   },
 
-  proxy: {
-    '/api/': { target: 'https://yummying-api.herokuapp.com/', changeOrigin: true }
-  },
+  proxy: [
+    'https://yummying-api.herokuapp.com/'
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   // modules: [

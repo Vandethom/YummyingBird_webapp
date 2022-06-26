@@ -27,13 +27,14 @@
             </div>
 
             <div class='signup-form'>
-                <input class='user-first-name' type='text' placeholder='Prénom'>
-                <input class='user-last-name' type='text' placeholder='Nom'>
+                <input id='user-first-name' type='text' placeholder='Prénom'>
+                <input id='user-last-name' type='text' placeholder='Nom'>
+                <button class='button-signup' @click='signup'>Créer mon compte</button>
             </div>
             
             <a href=''>mot de passe oublié</a>
             <button class='button-login' @click='login'>Connexion</button>
-            <button class='button-signup' @click='displaySignUpForm'>Inscription</button>
+            <button class='button-pop-signup-modal' @click='displaySignUpForm'>Inscription</button>
         </form>
     </div>
 </template>
@@ -46,7 +47,7 @@
             displaySignUpForm(e) {
                 e.preventDefault()
 
-                gsap.to( '.button-signup', {
+                gsap.to( '.button-pop-signup-modal', {
                     'display': 'none'
                 })
                 gsap.to('.signup-form', {
@@ -62,13 +63,14 @@
                 const email = document.getElementById( 'user-mail' ).value
                 const password = document.getElementById( 'user-password' ).value
                 
-                const login = await this.$axios.$post( '/login', { email, password} )
+                const login = await this.$axios.$post( '/login', { email, password } )
 
                 delete login.user.password
 
                 this.$store.commit( 'auth/loggedInUser', login )
                 this.$router.push( '/' )
             },
+
 
             switchPasswordVisibility() {
                 const passwordInput = document.getElementById( 'user-password' )
@@ -78,7 +80,23 @@
                 } else {
                     passwordInput.type = 'password'
                 }
-            }
+            },
+            
+            async signup(e) {
+                e.preventDefault()
+
+                const email = document.getElementById( 'user-mail' ).value
+                const password = document.getElementById( 'user-password' ).value
+                const firstName = document.getElementById( 'user-first-name' ).value
+                const lastName = document.getElementById( 'user-last-name' ).value
+                
+                const signup = await this.$axios.$post( '/signup', { email, password, firstName, lastName } )
+
+                delete signup.user.password
+
+                this.$store.commit( 'auth/loggedInUser', signup )
+                this.$router.push( '/' )
+            },
         }
     }
 </script>
@@ -110,6 +128,10 @@
 
             .signup-form {
                 display: none;
+
+                .button-signup {
+                    margin-top: 14px;
+                }
             }
 
             .connexion-input {
