@@ -45,7 +45,7 @@ export default {
   },
 
   proxy: {
-    '/api/': { target: 'https://yummying-api.herokuapp.com/', pathRewrite: { '^/api/': ''}, changeOrigin: true }
+    '/api/': { target: 'https://yummying-api.herokuapp.com/', changeOrigin: true }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
