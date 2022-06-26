@@ -62,6 +62,5 @@ export default {
   // proxy: {
   //   '/api/': { target: 'https://yummying-api.herokuapp.com/', pathRewrite: {'^/api/': ''} }
   // },c    baseURL: `http://localhost:3001`,
-/config-build
   build: {},
 }
