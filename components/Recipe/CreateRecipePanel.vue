@@ -231,7 +231,7 @@
                     recipeFormData.append(`${key}`, payload[key])
                 })
 
-                this.$axios.$post('api/recipe', recipeFormData)
+                this.$axios.$post('/recipe', recipeFormData)
                     .then(function (response) {
                         console.log(response);
                     })
