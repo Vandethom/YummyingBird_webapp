@@ -46,10 +46,13 @@
             displaySignUpForm(e) {
                 e.preventDefault()
 
+                gsap.to( '.button-signup', {
+                    'display': 'none'
+                })
                 gsap.to('.signup-form', {
                     'display': 'flex',
                     'flex-direction': 'column',
-                    'margin-left': '-14px'
+                    'margin': '14px 0 0 -2px'
                 })
             },
             
@@ -112,13 +115,13 @@
             .connexion-input {
                 margin: auto;
                 display: grid;
-                grid-template-columns: 265px 15px;
+                grid-template-columns: 240px 15px;
                 place-items: center;
 
                 img {
                     width: 24px;
                     height: 24px;
-                    margin-left: -45px;
+                    margin-left: -25px;
                     cursor: pointer;
                 }
             }
