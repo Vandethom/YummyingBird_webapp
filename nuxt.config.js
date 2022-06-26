@@ -35,6 +35,11 @@ export default {
     '@nuxt/typescript-build',
   ],
 
+  modules: [
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+  ],
+
   axios: {
     proxy: true
   },
@@ -42,7 +47,21 @@ export default {
   proxy: {
     '/api/': { target: 'https://yummying-api.herokuapp.com/', pathRewrite: { '^/api/': ''}, changeOrigin: true }
   },
-  
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  // modules: [
+  //   // https://go.nuxtjs.dev/axios
+  //   '@nuxtjs/axios',
+  // ],
+
+  // // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  // axios: {
+  //   // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+  //   proxy: true,
+  // },
+  // proxy: {
+  //   '/api/': { target: 'https://yummying-api.herokuapp.com/', pathRewrite: {'^/api/': ''} }
+  // },c    baseURL: `http://localhost:3001`,
+/config-build
   build: {},
 }
