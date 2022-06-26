@@ -29,7 +29,7 @@
         },
         
         beforeMount() {
-            this.$axios.$get('/recipes')
+            this.$axios.$get('api/recipes')
                 .then((res) => {
                     const parsedData = JSON.parse(JSON.stringify(res))
                     this.recipes = parsedData
