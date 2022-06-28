@@ -47,10 +47,6 @@ export default {
     credentials: false
   },
 
-  proxy: [
-    'https://yummying-api.herokuapp.com/'
-  ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
   // modules: [
   //   // https://go.nuxtjs.dev/axios

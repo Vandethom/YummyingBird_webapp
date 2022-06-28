@@ -63,12 +63,11 @@
                 const email = document.getElementById( 'user-mail' ).value
                 const password = document.getElementById( 'user-password' ).value
                 
-                const login = await this.$axios.$post( '/login', { email, password } )
+                const login = await this.$axios.$post( 'https://yummying-api.herokuapp.com/login', { email, password } )
 
                 delete login.user.password
 
                 this.$store.commit( 'auth/loggedInUser', login )
-                this.$router.push( '/' )
             },
 
 
