@@ -68,6 +68,7 @@
                 delete login.user.password
 
                 this.$store.commit( 'auth/loggedInUser', login )
+                this.$router.push( '/' )
             },
 
 
