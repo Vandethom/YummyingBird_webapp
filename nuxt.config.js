@@ -42,8 +42,6 @@ export default {
 
   axios: {
     baseURL: `https://yummying-api.herokuapp.com/`,
-    proxy: true,
-    proxyHeaders: false,
     credentials: false
   },
 
