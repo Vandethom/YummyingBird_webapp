@@ -18,7 +18,7 @@
                 src="~assets/icons/icon_logout.svg"
                 alt="logout icon"
             />
-            <NuxtLink class='panel-selection' to="/database">Déconnexion</NuxtLink>
+            <NuxtLink class='panel-selection' to="/auth">Déconnexion</NuxtLink>
         </div>
     </div>
 </template>
