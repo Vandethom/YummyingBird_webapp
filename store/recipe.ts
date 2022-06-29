@@ -1,4 +1,4 @@
-export const state = {
+export const state = () => ({
     recipe: {
         uuid: '',
         authorUuid: '34ae65c3-426d-4327-8dbc-78bca22197fa',
@@ -18,7 +18,7 @@ export const state = {
         tools: [],
         imageUrl: ''
     }
-}
+})
 
 
 function storeData(key: any, value: any, state: any) {

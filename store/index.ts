@@ -1,9 +1,5 @@
-export const state = () => ({
-    counter: 0
-  })
-  
-  export const mutations = {
-    increment (state: any) {
-      state.counter++
-    }
-  }
+import createPersistedState from 'vuex-persistedstate'
+
+export const plugins = [
+  createPersistedState()
+]
