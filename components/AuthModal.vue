@@ -2,7 +2,7 @@
     <div class='auth-modal'>
         <h2>Connexion - Inscription</h2>
         <hr />
-        <form>
+        <form class='form-login'>
             <div class='connexion-input'>
                 <input
                     id='user-mail'
@@ -26,9 +26,9 @@
                 </span>
             </div>
 
-            <div class='signup-form'>
-                <input class='user-first-name' type='text' placeholder='Prénom'>
-                <input class='user-last-name' type='text' placeholder='Nom'>
+            <div class='form-signup'>
+                <input class='user-first-name connexion-input' type='text' placeholder='Prénom'>
+                <input class='user-last-name connexion-input' type='text' placeholder='Nom'>
             </div>
             
             <a href=''>mot de passe oublié</a>
@@ -43,13 +43,13 @@
 
     export default {
         methods: {
-            displaySignUpForm(e) {
+            displaySignUpForm( e ) {
                 e.preventDefault()
 
                 gsap.to( '.button-signup', {
                     'display': 'none'
                 })
-                gsap.to('.signup-form', {
+                gsap.to('.form-signup', {
                     'display': 'flex',
                     'flex-direction': 'column',
                     'margin': '14px 0 0 -2px'
@@ -108,7 +108,7 @@
             margin: auto;
             margin-top: 40px;
 
-            .signup-form {
+            .form-signup {
                 display: none;
             }
 
@@ -174,10 +174,16 @@
         }
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and ( max-width: 1280px ) {
         .auth-modal {
             width: 80%;
             margin-top: 40px;
+        }
+    }
+
+    @media only screen and ( max-width: 480px ) {
+        .auth-modal {
+            width: 95vw;
         }
     }
 </style>

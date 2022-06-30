@@ -25,8 +25,8 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
     .header-container {
-      margin-left: 15% !important;
+      margin-left: 15%;
     }
 </style>
