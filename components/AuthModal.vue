@@ -27,13 +27,16 @@
             </div>
 
             <div class='form-signup'>
-                <input class='user-first-name connexion-input' type='text' placeholder='Prénom'>
-                <input class='user-last-name connexion-input' type='text' placeholder='Nom'>
+                <input id='user-first-name' class='connexion-input' type='text' placeholder='Prénom'>
+                <input id='user-last-name' class='connexion-input' type='text' placeholder='Nom'>
             </div>
             
             <a href=''>mot de passe oublié</a>
             <button class='button-login' @click='login'>Connexion</button>
             <button class='button-signup' @click='displaySignUpForm'>Inscription</button>
+            <button class='button-create-account' @click='signup'>Créer mon compte</button>
+            <p class='auth-message'>Votre compte a été créé correctement, bienvenue parmi nous !</p>
+            <p class='auth-message'>Vous pouvez désormais vous connecter pour accéder au site.</p>
         </form>
     </div>
 </template>
@@ -48,15 +51,36 @@
 
                 gsap.to( '.button-signup', {
                     'display': 'none'
-                })
+                } )
+                gsap.to( '.button-login', {
+                    'display': 'none'
+                } )
+                gsap.to( '.button-create-account', {
+                    'display': 'flex'
+                } )
                 gsap.to('.form-signup', {
                     'display': 'flex',
                     'flex-direction': 'column',
                     'margin': '14px 0 0 -2px'
-                })
+                } )
+            },
+
+            displaySignUpMessage() {
+                gsap.to( '.auth-message', {
+                    'display': 'inline-block',
+                } )
+                gsap.to( '.button-login', {
+                    'display': 'inline-block',
+                } )
+                gsap.to( '.button-create-account', {
+                    'display': 'none'
+                } )
+                gsap.to( '.form-signup', {
+                    'display': 'none'
+                } )
             },
             
-            async login(e) {
+            async login( e ) {
                 e.preventDefault()
                 
                 const email = document.getElementById( 'user-mail' ).value
@@ -68,6 +92,19 @@
 
                 this.$store.commit( 'auth/loggedInUser', login )
                 this.$router.push( '/' )
+            },
+
+            async signup( e ) {
+                e.preventDefault()
+
+                const email = document.getElementById( 'user-mail' ).value
+                const password = document.getElementById( 'user-password' ).value
+                const firstName = document.getElementById( 'user-first-name' ).value
+                const lastName = document.getElementById( 'user-last-name' ).value
+
+                await this.$axios.$post( '/signup', { email, password, firstName, lastName} )
+
+                this.displaySignUpMessage()
             },
 
             switchPasswordVisibility() {
@@ -151,6 +188,20 @@
                 margin-bottom: 40px;
             }
 
+            .button-create-account {
+                display: none;
+                background: #F7F6CF;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .auth-message {
+                display: none;
+                color: #5784BA;
+                text-align: center;
+                font-size: 18px;
+            }
+
             button {
                 margin: auto;
                 margin-bottom: 8px;
@@ -171,6 +222,7 @@
                     background: #F7F6CF;
                 }
             }
+
         }
     }
 
