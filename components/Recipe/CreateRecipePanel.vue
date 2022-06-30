@@ -356,6 +356,11 @@
                 }
             }
         }
-        
+
+        @media only screen and (max-width: 900px) {
+            input {
+                max-width: 60vw;
+            }
+        }
     }
 </style>

@@ -39,4 +39,10 @@ export default {
     .create-recipe-screen {
         display: flex;
     }
+
+    @media only screen and (max-width: 900px) {
+        .createRecipe-container {
+            margin: auto;
+        }
+    }
 </style>

@@ -47,6 +47,7 @@
         top: 0;
         background-color: #F7F6CF;
         width: 12vw;
+        min-width: 200px;
         height: 100vh;
         border-left: 1px solid black;
         padding-top: 100px;
@@ -76,9 +77,9 @@
         }
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 900px) {
         .side-panel-container {
-            width: 70px;
+            display: none;
         }
     }
 </style>
