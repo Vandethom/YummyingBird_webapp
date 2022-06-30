@@ -16,7 +16,7 @@
 <style lang="scss" scoped>
     .search-bar {
         display: flex;
-        width: 620px;
+        width: 32vw;
         height: 55px;
         margin-left: 8vw;
         background: #B6D8F2;

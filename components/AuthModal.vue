@@ -2,7 +2,7 @@
     <div class='auth-modal'>
         <h2>Connexion - Inscription</h2>
         <hr />
-        <form>
+        <form class='form-login'>
             <div class='connexion-input'>
                 <input
                     id='user-mail'
@@ -26,15 +26,17 @@
                 </span>
             </div>
 
-            <div class='signup-form'>
-                <input id='user-first-name' type='text' placeholder='Prénom'>
-                <input id='user-last-name' type='text' placeholder='Nom'>
-                <button class='button-signup' @click='signup'>Créer mon compte</button>
+            <div class='form-signup'>
+                <input id='user-first-name' class='connexion-input' type='text' placeholder='Prénom'>
+                <input id='user-last-name' class='connexion-input' type='text' placeholder='Nom'>
             </div>
             
             <a href=''>mot de passe oublié</a>
             <button class='button-login' @click='login'>Connexion</button>
-            <button class='button-pop-signup-modal' @click='displaySignUpForm'>Inscription</button>
+            <button class='button-signup' @click='displaySignUpForm'>Inscription</button>
+            <button class='button-create-account' @click='signup'>Créer mon compte</button>
+            <p class='auth-message'>Votre compte a été créé correctement, bienvenue parmi nous !</p>
+            <p class='auth-message'>Vous pouvez désormais vous connecter pour accéder au site.</p>
         </form>
     </div>
 </template>
@@ -44,20 +46,41 @@
 
     export default {
         methods: {
-            displaySignUpForm(e) {
+            displaySignUpForm( e ) {
                 e.preventDefault()
 
                 gsap.to( '.button-pop-signup-modal', {
                     'display': 'none'
-                })
-                gsap.to('.signup-form', {
+                } )
+                gsap.to( '.button-login', {
+                    'display': 'none'
+                } )
+                gsap.to( '.button-create-account', {
+                    'display': 'flex'
+                } )
+                gsap.to('.form-signup', {
                     'display': 'flex',
                     'flex-direction': 'column',
                     'margin': '14px 0 0 -2px'
-                })
+                } )
+            },
+
+            displaySignUpMessage() {
+                gsap.to( '.auth-message', {
+                    'display': 'inline-block',
+                } )
+                gsap.to( '.button-login', {
+                    'display': 'inline-block',
+                } )
+                gsap.to( '.button-create-account', {
+                    'display': 'none'
+                } )
+                gsap.to( '.form-signup', {
+                    'display': 'none'
+                } )
             },
             
-            async login(e) {
+            async login( e ) {
                 e.preventDefault()
                 
                 const email = document.getElementById( 'user-mail' ).value
@@ -70,7 +93,6 @@
                 this.$store.commit( 'auth/loggedInUser', login )
                 this.$router.push( '/' )
             },
-
 
             switchPasswordVisibility() {
                 const passwordInput = document.getElementById( 'user-password' )
@@ -126,7 +148,7 @@
             margin: auto;
             margin-top: 40px;
 
-            .signup-form {
+            .form-signup {
                 display: none;
 
                 .button-signup {
@@ -173,6 +195,20 @@
                 margin-bottom: 40px;
             }
 
+            .button-create-account {
+                display: none;
+                background: #F7F6CF;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .auth-message {
+                display: none;
+                color: #5784BA;
+                text-align: center;
+                font-size: 18px;
+            }
+
             button {
                 margin: auto;
                 margin-bottom: 8px;
@@ -193,13 +229,20 @@
                     background: #F7F6CF;
                 }
             }
+
         }
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and ( max-width: 1280px ) {
         .auth-modal {
             width: 80%;
             margin-top: 40px;
+        }
+    }
+
+    @media only screen and ( max-width: 480px ) {
+        .auth-modal {
+            width: 95vw;
         }
     }
 </style>

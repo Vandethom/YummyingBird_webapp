@@ -29,7 +29,6 @@ export default {
         align-items: center;
     }
     .header-container {
-        width: 100vw;
         margin-left: 25%;   
 
         hr {
@@ -38,7 +37,7 @@ export default {
         }
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and ( max-width: 600px ) {
         .header-container {
                 width: 80%;
                 
@@ -48,6 +47,5 @@ export default {
                     }
             }
         }
-        
     }
 </style>

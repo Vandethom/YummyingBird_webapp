@@ -1,5 +1,5 @@
 <template>
-    <div class='accountOptions-container'>
+    <div class='account-options-container'>
         <div class="language-options">
             <p>Fr</p>
         </div>
@@ -17,7 +17,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .accountOptions-container {
+    .account-options-container {
         display: flex;
         align-items: center;
         margin-left: 6vw;
@@ -48,6 +48,13 @@
                 width: 32px;
                 height: 32px;
             }
+        }
+    }
+        
+
+    @media only screen and ( max-width: 1280px ) {
+        .account-options-container {
+            display: none;
         }
     }
 </style>
