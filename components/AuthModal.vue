@@ -49,10 +49,7 @@
             displaySignUpForm( e ) {
                 e.preventDefault()
 
-                gsap.to( '.button-pop-signup-modal', {
-                    'display': 'none'
-                } )
-                gsap.to( '.button-login', {
+                gsap.to( '.button-login, .button-signup', {
                     'display': 'none'
                 } )
                 gsap.to( '.button-create-account', {
