@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Header from '../components/utils/Header.vue'
-import AuthModal from '../components/AuthModal.vue'
+import AuthModal from '../components/auth/AuthModal.vue'
 
 export default {
     components: {

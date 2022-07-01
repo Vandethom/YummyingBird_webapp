@@ -26,7 +26,28 @@ function storeData(key: any, value: any, state: any) {
 }
 
 
-export const mutations = {    
+export const mutations = {   
+    clearState(state: any) {
+        state.recipe = {
+            uuid: '',
+            authorUuid: '34ae65c3-426d-4327-8dbc-78bca22197fa',
+    
+            title: '',
+            description: '',
+            categories: [],
+            preparationTime: 0,
+            ingredients: [],
+    
+            vegan: false,
+            glutenFree: false,
+            porkFree: false,
+    
+            steps: [],
+            options: [],
+            tools: [],
+            imageUrl: ''
+        }
+    },
     storeTitle(state: any, title: string) {
         storeData('title', title, state)
         state.count += 1

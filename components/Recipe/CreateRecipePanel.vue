@@ -237,7 +237,9 @@
                     })
                     .catch(function (error) {
                         console.log(error);
-                    })
+                    })  
+                this.$store.commit('recipe/clearState')
+                this.$router.push( '/' )
                 
             }
         }

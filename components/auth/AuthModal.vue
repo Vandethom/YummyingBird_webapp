@@ -19,7 +19,7 @@
                 <span>
                     <img
                         class='icon-visibility-on'
-                        src='../assets/icons/icon_visibility_on.svg'
+                        src='@/assets/icons/icon_visibility_on.svg'
                         alt='icon eye open'
                         @click='switchPasswordVisibility'
                     >
