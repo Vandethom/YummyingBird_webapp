@@ -1,9 +1,8 @@
 export const state = () => ({
     recipe: {
         uuid: '',
-        authorUuid: '34ae65c3-426d-4327-8dbc-78bca22197fa',
-
         title: '',
+
         description: '',
         categories: [],
         preparationTime: 0,
@@ -20,17 +19,36 @@ export const state = () => ({
     }
 })
 
+const defaultRecipeState: any = () => ({
+        uuid: '',
+        title: '',
+        
+        description: '',
+        categories: [],
+        preparationTime: 0,
+        ingredients: [],
 
-function storeData(key: any, value: any, state: any) {
+        vegan: false,
+        glutenFree: false,
+        porkFree: false,
+
+        steps: [],
+        options: [],
+        tools: [],
+        imageUrl: ''
+    })
+
+
+function storeData( key: any, value: any, state: any ) {
     state.recipe[key] = value
 }
+
 
 
 export const mutations = {   
     clearState(state: any) {
         state.recipe = {
             uuid: '',
-            authorUuid: '34ae65c3-426d-4327-8dbc-78bca22197fa',
     
             title: '',
             description: '',
@@ -48,6 +66,29 @@ export const mutations = {
             imageUrl: ''
         }
     },
+    
+    deleteData( state: any, key: any) {
+        const recipeKey = key.split('_').shift()
+        const id = key.split('_').pop()
+        console.log('here is the id ::::::', id)
+
+        switch (typeof state.recipe[recipeKey]){
+            case 'string':
+                state.recipe[key] = defaultRecipeState[key]
+                break
+
+            case 'boolean': 
+                state.recipe[key] = !state.recipe[key]
+                break
+
+            case 'object':
+                console.log('Here is the selected field', state.recipe[recipeKey])
+                console.log('Here is the content', state.recipe[recipeKey][id])
+                state.recipe[recipeKey].splice(id, 1)
+                break
+        }
+    },
+
     storeTitle(state: any, title: string) {
         storeData('title', title, state)
         state.count += 1
