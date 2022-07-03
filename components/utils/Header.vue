@@ -29,6 +29,7 @@ export default {
         align-items: center;
     }
     .header-container {
+        height: 19vh;
         margin-left: 25%;   
 
         hr {

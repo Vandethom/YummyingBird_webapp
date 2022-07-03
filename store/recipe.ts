@@ -70,11 +70,14 @@ export const mutations = {
     deleteData( state: any, key: any) {
         const recipeKey = key.split('_').shift()
         const id = key.split('_').pop()
-        console.log('here is the id ::::::', id)
 
         switch (typeof state.recipe[recipeKey]){
             case 'string':
                 state.recipe[key] = defaultRecipeState[key]
+                break
+            
+            case 'number':
+                state.recipe[key] = undefined
                 break
 
             case 'boolean': 
@@ -82,8 +85,6 @@ export const mutations = {
                 break
 
             case 'object':
-                console.log('Here is the selected field', state.recipe[recipeKey])
-                console.log('Here is the content', state.recipe[recipeKey][id])
                 state.recipe[recipeKey].splice(id, 1)
                 break
         }

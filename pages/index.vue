@@ -38,6 +38,8 @@ export default {
 <style lang='scss' scoped>
     .create-recipe-screen {
         display: flex;
+        width: 100vw;
+        overflow: hidden;
     }
 
     @media only screen and (max-width: 900px) {
