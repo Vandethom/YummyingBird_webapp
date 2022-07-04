@@ -1,5 +1,5 @@
 <template>
-    <div class='preview-container'>
+    <div v-show='recipe' class='preview-container'>
         <div v-show='recipe.title' class='preview-value'>
             <h2>{{ recipe.title }}</h2>
             <button id='title' @click='deleteValue'>x</button>
@@ -142,7 +142,7 @@
             display: grid;
             grid-template-columns: 1fr auto auto;
             place-items: center;
-            max-width: 32vw;
+            width: 32vw;
             margin-right: 80px;
 
             button {
