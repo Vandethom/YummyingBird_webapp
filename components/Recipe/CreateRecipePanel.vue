@@ -231,7 +231,7 @@
                     recipeFormData.append(`${key}`, payload[key])
                 })
 
-                this.$axios.$post('/recipe', recipeFormData)
+                this.$axios.$post('https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', recipeFormData)
                     .then(function (response) {
                         console.log(response);
                     })

@@ -10,7 +10,7 @@
             <button id='description' @click='deleteValue'>x</button>
             <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
         </div>
-        <div v-show='recipe.categories' class='preview-value'>
+        <div v-show='recipe.categories.length > 0' class='preview-value'>
             <ul>
                 <h4>Catégories:</h4>
                 <li v-for='category in recipe.categories' :id='"category"+index' :key='category'>
@@ -25,7 +25,7 @@
             <button id='preparationTime' @click='deleteValue'>x</button>
             <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
         </div>
-        <div v-show='recipe.ingredients' class='preview-value'>
+        <div v-show='recipe.ingredients.length > 0' class='preview-value'>
             <ul>
                 <h4>Ingrédients:</h4>
                 <li v-for='ingredient in recipe.ingredients' :key='ingredient'>
@@ -55,7 +55,7 @@
                 </li>
             </ul>
         </div>
-        <div v-show='recipe.tools' class='preview-value'>
+        <div v-show='recipe.tools.length > 0' class='preview-value'>
             <ul>
                 <h4>Ustensiles:</h4>
                 <li v-for='tool in recipe.tools' :key='tool'>
@@ -65,7 +65,7 @@
                 </li>
             </ul>
         </div>
-        <div v-show='recipe.steps' class='preview-value'>
+        <div v-show='recipe.steps.length > 0' class='preview-value'>
             <ul>
                 <h4>Etapes de préparation:</h4>
                 <li v-for='step in recipe.steps' :key='step'>
@@ -75,7 +75,7 @@
                 </li>
             </ul>
         </div>
-        <div v-show='recipe.options' class='preview-value'>
+        <div v-show='recipe.options.length > 0' class='preview-value'>
             <ul>
                 <h4>Options et astuces:</h4>
                 <li v-for='option in recipe.options' :key='option'>
@@ -89,8 +89,8 @@
             <img :src="recipe.imageUrl" alt="Photo of the recipe">
         </div>
         <p v-if='recipe.imageUrl'>{{ recipe.imageUrl }}</p> -->
-        <div class='open-menu-arrow'>
-            <img src="@/assets/icons/icon_arrow_left.svg" alt="arrow to left" @click='openPreview'>
+        <div id='open-menu-arrow'>
+            <img class='arrow' src="@/assets/icons/icon_arrow_left.svg" alt="arrow to left" @click='openPreview'>
         </div>
     </div>
 </template>
@@ -121,9 +121,30 @@
             },
 
             openPreview() {
-                gsap.to('.preview-container', {
-                    'transform': 'translateX(10%)'
-                })
+                const sliderName = document.getElementById('open-menu-arrow') || document.getElementById('close-menu-arrow')
+                
+                if (sliderName.id === 'open-menu-arrow') {
+                    gsap.to('.preview-container', {
+                        'transform': 'translateX(10%)'
+                    })
+                    gsap.to('.arrow', {
+                        'transform': 'rotate(180deg)',
+                        'duration': 0
+                    })
+
+                    sliderName.id = 'close-menu-arrow'
+
+                } else {
+                    gsap.to('.preview-container', {
+                        'transform': 'translateX(95%)'
+                    })
+                    gsap.to('.arrow', {
+                        'transform': 'rotate(360deg)',
+                        'duration': 0
+                    })
+
+                    sliderName.id = 'open-menu-arrow'
+                }
             }
         }
     }
@@ -132,18 +153,23 @@
 <style lang="scss" scoped>
     .preview-container {
         background: #5784BA;
+        width: 30vw;
         position: relative;
         padding: 16px;
-        right: 0;
+        right: -120px;
         border-radius: 7px 0 0 7px;
         transform: translateX(97%);
 
         .preview-value {
             display: grid;
-            grid-template-columns: 1fr auto auto;
+            grid-template-columns: 32fr 1fr 1fr;
             place-items: center;
-            width: 32vw;
+            word-wrap: break-word;
             margin-right: 80px;
+
+            & > * {
+            max-width: 16vw;
+            }
 
             button {
                 display: grid;
@@ -163,19 +189,18 @@
                 list-style-type: none;
 
                 li {
-                    display: flex;
                     margin-bottom: 6px;
                     display: grid;
-                    grid-template-columns: 1fr auto auto;
+                    grid-template-columns: 8fr 1fr 1fr;
                 }
             }
         }
 
-        .open-menu-arrow {
+        #open-menu-arrow, #close-menu-arrow {
             display: grid;
             place-items: center;
             position: relative;
-            top: -75%;
+            top: -80px;
             left: -50px;
             width: 80px;
             height: 120px;
