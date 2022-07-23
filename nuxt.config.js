@@ -41,7 +41,7 @@ export default {
   ],
 
   axios: {
-    baseURL: `https://yummying-api.herokuapp.com/`,
+    baseURL: `https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/`,
     credentials: false
   },
 
