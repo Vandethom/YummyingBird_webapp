@@ -11,10 +11,10 @@
             <label>
                 <span>Titre :</span>
                 <input 
-                    id='title'
+                    id='name'
                     type='text' 
                     placeholder='Gratin de citrouille' 
-                    name='title'
+                    name='name'
                     @change='storeTitle'
                 />
             </label>
@@ -45,10 +45,10 @@
             <label>
                 <span>Durée :</span>
                 <input 
-                    id='preparationTime'
+                    id='durationTime'
                     type='number' 
                     placeholder='45' 
-                    name='preparationTime'
+                    name='durationTime'
                     @change='storePreparationTime'
                 />
             </label>
@@ -70,30 +70,30 @@
                 <legend>La recette est-elle :</legend>
                 <div>
                     <input
-                        id='vegan'
+                        id='isVegan'
                         type='checkbox'
-                        name='vegan'
+                        name='isVegan'
                         @click='storeDiet'
                     >
-                    <label class='diet-label' for='vegan'>vegan</label>
+                    <label class='diet-label' for='isVegan'>vegan</label>
                 </div>
                 <div>
                     <input
-                        id='porkFree'
+                        id='isPorkFree'
                         type='checkbox'
-                        name='porkFree'
+                        name='isPorkFree'
                         @click='storeDiet'
                     >
-                    <label class='diet-label' for='porkFree'>sans porc</label>
+                    <label class='diet-label' for='isPorkFree'>sans porc</label>
                 </div>
                 <div>
                     <input
-                        id='glutenFree'
+                        id='isGlutenFree'
                         type='checkbox'
-                        name='glutenFree'
+                        name='isGlutenFree'
                         @click='storeDiet'
                     >
-                    <label class='diet-label' for='glutenFree'>sans gluten</label>
+                    <label class='diet-label' for='isGlutenFree'>sans gluten</label>
                 </div>
             </fieldset>
             <label>
@@ -166,7 +166,7 @@
             // mutation, though unnused variable, is needed as parameter to subscribe()
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             this.unsubscribe = this.$store.subscribe((mutation, state) => {
-                this.recipe = state.recipe.recipe.title
+                this.recipe = state.recipe.recipe.name
             });
         },
 
@@ -220,18 +220,15 @@
             postRecipe(e) {
                 e.preventDefault()
                 
-                const uuid = uuidv4()
+                const storedRecipe = this.$store.state.recipe.recipe
 
-                const recipeFormData = new FormData()
+                const newRecipe = {
+                    authorUuid: "1234567890",
+                    ...storedRecipe
+                }
 
 
-                this.$store.commit('recipe/setUuid', uuid)
-                const payload = this.$store.state.recipe.recipe
-                Object.keys(payload).forEach(function(key) {
-                    recipeFormData.append(`${key}`, payload[key])
-                })
-
-                this.$axios.$post('https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', recipeFormData)
+                this.$axios.$post('https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', newRecipe)
                     .then(function (response) {
                         console.log(response);
                     })
@@ -334,7 +331,7 @@
                 }
                    
             }
-            #preparationTime, #category, #ingredients, #imageUrl {
+            #durationTime, #category, #ingredients, #imageUrl {
                 width: 150px;
             }
 

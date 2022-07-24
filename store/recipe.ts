@@ -1,40 +1,42 @@
 export const state = () => ({
     recipe: {
         uuid: '',
-        title: '',
+        name: '',
 
         description: '',
         categories: [],
-        preparationTime: 0,
+        durationTime: 0,
         ingredients: [],
 
-        vegan: false,
-        glutenFree: false,
-        porkFree: false,
+        isVegan: false,
+        isGlutenFree: false,
+        isPorkFree: false,
 
         steps: [],
         options: [],
         tools: [],
+
         imageUrl: ''
     }
 })
 
 const defaultRecipeState: any = () => ({
         uuid: '',
-        title: '',
+        name: '',
         
         description: '',
         categories: [],
-        preparationTime: 0,
+        durationTime: 0,
         ingredients: [],
 
-        vegan: false,
-        glutenFree: false,
-        porkFree: false,
+        isVegan: false,
+        isGlutenFree: false,
+        isPorkFree: false,
 
         steps: [],
         options: [],
         tools: [],
+
         imageUrl: ''
     })
 
@@ -49,20 +51,21 @@ export const mutations = {
     clearState(state: any) {
         state.recipe = {
             uuid: '',
-    
-            title: '',
+            name: '',
+
             description: '',
             categories: [],
-            preparationTime: 0,
+            durationTime: 0,
             ingredients: [],
     
-            vegan: false,
-            glutenFree: false,
-            porkFree: false,
+            isVegan: false,
+            isGlutenFree: false,
+            isPorkFree: false,
     
             steps: [],
             options: [],
             tools: [],
+
             imageUrl: ''
         }
     },
@@ -81,47 +84,47 @@ export const mutations = {
                 break
 
             case 'boolean': 
-                state.recipe[key] = !state.recipe[key]
+                state.recipe[ key ] = !state.recipe[ key ]
                 break
 
             case 'object':
-                state.recipe[recipeKey].splice(id, 1)
+                state.recipe[ recipeKey ].splice( id, 1 )
                 break
         }
     },
 
-    storeTitle(state: any, title: string) {
-        storeData('title', title, state)
+    storeTitle( state: any, name: string ) {
+        storeData('name', name, state)
         state.count += 1
         return state
     },
 
-    storeDescription(state: any, description: string) {
-        storeData('description', description, state)
+    storeDescription( state: any, description: string ) {
+        storeData( 'description', description, state )
     },
 
-    storeCategory(state: any, category: string) {
-        state.recipe.categories.push(category)
+    storeCategory( state: any, category: string ) {
+        state.recipe.categories.push( category )
     },
 
-    storePreparationTime(state: any, preparationTime: string) {
-        storeData('preparationTime', parseInt(preparationTime), state)
+    storePreparationTime( state: any, durationTime: string ) {
+        storeData( 'durationTime', parseInt( durationTime ), state )
     },
 
-    storeIngredient(state: any, ingredient: string) {
-        state.recipe.ingredients.push(ingredient)
+    storeIngredient( state: any, ingredient: string ) {
+        state.recipe.ingredients.push( ingredient )
     },    
 
     storeDiet(state: any, diet: string) {
         switch(diet) {
-            case diet = 'vegan':
-                state.recipe.vegan = !state.recipe.vegan
+            case diet = 'isVegan':
+                state.recipe.isVegan = !state.recipe.isVegan
                 break
-            case diet = 'glutenFree':
-                state.recipe.glutenFree = !state.recipe.glutenFree
+            case diet = 'isGlutenFree':
+                state.recipe.isGlutenFree = !state.recipe.isGlutenFree
                 break
-            case diet = 'porkFree':
-                state.recipe.porkFree = !state.recipe.porkFree
+            case diet = 'isPorkFree':
+                state.recipe.isPorkFree = !state.recipe.isPorkFree
                 break
         }
     },

@@ -38,11 +38,15 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
 
   axios: {
-    baseURL: `https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/`,
-    credentials: false
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': { target: 'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', pathRewrite: {'^/api/': ''}, changeOrigin: true }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
