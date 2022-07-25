@@ -83,7 +83,7 @@
                 const email = document.getElementById( 'user-mail' ).value
                 const password = document.getElementById( 'user-password' ).value
                 
-                const login = await this.$axios.$post( 'https://yummying-api.herokuapp.com/login', { email, password } )
+                const login = await this.$axios.$post( 'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/auth/login', { email, password } )
 
                 delete login.user.password
 
