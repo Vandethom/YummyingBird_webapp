@@ -109,7 +109,10 @@
                 const firstName = document.getElementById( 'user-first-name' ).value
                 const lastName = document.getElementById( 'user-last-name' ).value
                 
-                const signup = await this.$axios.$post( '/signup', { email, password, firstName, lastName } )
+                const signup = await this.$axios.$post(
+                        'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/auth/signup',
+                        { email, password, firstName, lastName } 
+                    )
 
                 delete signup.user.password
 
