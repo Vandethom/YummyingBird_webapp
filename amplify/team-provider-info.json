@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-yummyingbirdwebapp-dev-153033-authRole",
+      "UnauthRoleArn": "arn:aws:iam::039867284219:role/amplify-yummyingbirdwebapp-dev-153033-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::039867284219:role/amplify-yummyingbirdwebapp-dev-153033-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-yummyingbirdwebapp-dev-153033-deployment",
+      "UnauthRoleName": "amplify-yummyingbirdwebapp-dev-153033-unauthRole",
+      "StackName": "amplify-yummyingbirdwebapp-dev-153033",
+      "StackId": "arn:aws:cloudformation:eu-west-3:039867284219:stack/amplify-yummyingbirdwebapp-dev-153033/4c069b60-0db0-11ed-86f0-0622e15037a0",
+      "AmplifyAppId": "dgm1u98yiw1es"
+    },
+    "categories": {
+      "auth": {
+        "yummyingbirdwebapp656aec72": {}
+      }
+    }
+  }
+}

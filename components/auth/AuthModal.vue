@@ -6,6 +6,7 @@
             <div class='connexion-input'>
                 <input
                     id='user-mail'
+                    v-model='mail'
                     type='email'
                     placeholder='email'
                 >
@@ -13,6 +14,7 @@
             <div class='connexion-input'>
                 <input
                     id='user-password'
+                    v-model='password'
                     type='password'
                     placeholder='mot de passe'
                 >
@@ -34,7 +36,7 @@
             <a href=''>mot de passe oublié</a>
             <button class='button-login' @click='login'>Connexion</button>
             <button class='button-signup' @click='displaySignUpForm'>Inscription</button>
-            <button class='button-create-account' @click='signup'>Créer mon compte</button>
+            <button class='button-create-account' @click='signIn'>Créer mon compte</button>
             <p class='auth-message'>Votre compte a été créé correctement, bienvenue parmi nous !</p>
             <p class='auth-message'>Vous pouvez désormais vous connecter pour accéder au site.</p>
         </form>
@@ -42,9 +44,17 @@
 </template>
 
 <script>
+    import { Auth } from 'aws-amplify'
     import { gsap } from "gsap"
 
     export default {
+        data() {
+            return {
+                mail: '',
+                password: '',
+            }
+        },
+
         methods: {
             displaySignUpForm( e ) {
                 e.preventDefault()
@@ -82,12 +92,31 @@
                 
                 const email = document.getElementById( 'user-mail' ).value
                 const password = document.getElementById( 'user-password' ).value
+
+                const user = {
+                    email,
+                    password
+                }
+                console.log('Here is our formatted user ::: ', user)
+
+                try{
+                    const response = await this.$axios.$post( `https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/auth/login`, user );
+                    return response;
+                } catch(err){
+                    console.error(err);
+                }
                 
-                const login = await this.$axios.$post( 'https://yummying-api.herokuapp.com/login', { email, password } )
+                // this.$axios.$post('https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/auth/login', user
+                //  )
+                // .then(function (response) {
+                //     console.log('Here is the response, if one ::: ',response);
+                // })
+                // .catch(function (error) {
+                //     console.log({ message: error });
+                // }) 
 
-                delete login.user.password
+                // delete login.user.password
 
-                this.$store.commit( 'auth/loggedInUser', login )
                 this.$router.push( '/' )
             },
 
@@ -99,6 +128,17 @@
                 } else {
                     passwordInput.type = 'password'
                 }
+            },
+            
+            signIn(e) {
+                e.preventDefault()
+                Auth.signUp( this.mail, this.password )
+                    .then(res => {
+                        // this.$store.state.signedIn = !!res
+                        // this.$store.state.user = res
+                        console.log(res)
+                    })
+                    .catch(error => console.log(error))
             },
             
             async signup(e) {
