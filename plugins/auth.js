@@ -26,5 +26,4 @@ export default async ({ store }) => {
     Vue.$auth = authService
     
     await store.dispatch('auth/load')
-    
 }

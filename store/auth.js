@@ -5,6 +5,11 @@ export const state = () => ({
     signedIn: false
 })
 
+export const defaultUserState = () => ({
+    user: {},
+    signedIn: false
+})
+
 export const getters = {
     user(state) {
         return state.user
@@ -60,6 +65,6 @@ export const actions = {
 
     async logOut( { commit } ) {
         await Auth.signOut()
-        commit( 'set', null )
+        commit( 'set', this.$store.defaultUserState )
     }
 }

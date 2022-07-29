@@ -20,7 +20,6 @@ export const state = () => ({
 })
 
 const defaultRecipeState: any = () => ({
-        uuid: '',
         name: '',
         
         description: '',
@@ -49,7 +48,6 @@ function storeData( key: any, value: any, state: any ) {
 export const mutations = {   
     clearState(state: any) {
         state.recipe = {
-            uuid: '',
             name: '',
 
             description: '',
@@ -94,7 +92,6 @@ export const mutations = {
 
     storeTitle( state: any, name: string ) {
         storeData('name', name, state)
-        state.count += 1
         return state
     },
 
@@ -143,8 +140,4 @@ export const mutations = {
     storeImageUrl(state: any, imageUrl: string) {
         storeData('imageUrl', imageUrl, state)
     },
-    
-    setUuid(state: any, uuid: string) {
-        storeData('uuid', uuid, state)
-    }
 }

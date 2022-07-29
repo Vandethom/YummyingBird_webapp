@@ -2,7 +2,26 @@
     <div class='auth-modal'>
         <h2>Connexion - Inscription</h2>
         <hr />
-        <form v-if='step === steps.register' @submit.prevent="register">
+
+        <form v-if='step === steps.login' @submit.prevent='logIn'>
+            <input
+                v-model='loginForm.email'
+                type='email'
+                placeholder='Email'
+                class='form-control'
+            />
+            <input
+                v-model='loginForm.password'
+                type='password'
+                placeholder='Password'
+                class='form-control'
+            />
+            <button type='submit' class='button--green'>Se connecter</button>
+            <p class='switch-popup' @click='displayPopUp("CONFIRM")'>Vérifier mon code</p>
+            <p class='switch-popup' @click='displayPopUp("REGISTER")'>Créer un compte</p>
+        </form>
+        
+        <form v-else-if='step === steps.register' @submit.prevent='register'>
             <input 
                 v-model='registerForm.email'
                 type='email'
@@ -15,11 +34,12 @@
                 placeholder='Password'
                 class='form-control'
             >
-            <button type='submit' class='button-green'>Créer mon compte</button>
-            <p class='switch-popup' @click='displayPopUp'>Vérifier mon code</p>
+            <button type='submit' class='button-green'>Créer un compte</button>
+            <p class='switch-popup' @click='displayPopUp("CONFIRM")'>Vérifier mon code</p>
+            <p class='switch-popup' @click='displayPopUp("LOGIN")'>Se connecter à un compte existant.</p>
         </form>
 
-        <form v-else @submit.prevent="confirm">
+        <form v-else @submit.prevent='confirm'>
             <input
                 v-model='confirmForm.email'
                 type='email'
@@ -32,7 +52,8 @@
                 class='form-control'
             >
             <button type='submit' class='button-green'>Vérifier le code</button>
-            <p class='switch-popup' @click='displayPopUp'>Créer un compte</p>
+            <p class='switch-popup' @click='displayPopUp("REGISTER")'>Créer un compte</p>
+            <p class='switch-popup' @click='displayPopUp("LOGIN")'>Se connecter à un compte existant.</p>
         </form>
     </div>
 </template>
@@ -40,7 +61,8 @@
 <script>
     const steps = {
         register: 'REGISTER',
-        confirm: 'CONFIRM'
+        confirm: 'CONFIRM',
+        login: 'LOGIN'
     }
 
     export default {
@@ -49,7 +71,12 @@
                 mail: '',
                 password: '',
                 steps: { ...steps },
-                step: steps.register,
+                step: steps.login,
+                loginForm:
+                {
+                    email: '',
+                    password: ''
+                },
                 registerForm: {
                     email: '',
                     password: '',
@@ -67,17 +94,22 @@
                     await this.$store.dispatch( 'auth/confirmRegistration', this.confirmForm )
                     await this.$store.dispatch( 'auth/logIn', this.registerForm )
                     this.$router.push( '/' )
-                } catch (error ) {
-                    console.log( {error } )
+                } catch ( error ) {
+                    console.log( { error } )
                 }
             },
 
-            displayPopUp() {
-                if ( this.step === 'REGISTER' ) {
-                    this.step = 'CONFIRM'
-                } else {
-                    this.step = 'REGISTER'
-                }
+            displayPopUp( e ) {
+                this.step = e
+            },
+
+            async logIn() {
+            try {
+                await this.$store.dispatch( 'auth/logIn', this.loginForm )
+                this.$router.push( '/' )
+            } catch (error) {
+                console.log({ error })
+            }
             },
 
             async register() {
@@ -98,25 +130,6 @@
                 } else {
                     passwordInput.type = 'password'
                 }
-            },
-            
-            async signup(e) {
-                e.preventDefault()
-
-                const email = document.getElementById( 'user-mail' ).value
-                const password = document.getElementById( 'user-password' ).value
-                const firstName = document.getElementById( 'user-first-name' ).value
-                const lastName = document.getElementById( 'user-last-name' ).value
-                
-                const signup = await this.$axios.$post(
-                        'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/auth/signup',
-                        { email, password, firstName, lastName } 
-                    )
-
-                delete signup.user.password
-
-                this.$store.commit( 'auth/loggedInUser', signup )
-                this.$router.push( '/' )
             },
         }
     }

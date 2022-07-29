@@ -3,8 +3,7 @@
     <Header />
 
     <div v-if='!$auth.isAuthenticated'>
-        <NuxtLink to='/register' class='redirection-button'>Créer un compte</NuxtLink>
-        <NuxtLink to='/login' class='redirection-button'>Se connecter</NuxtLink>
+        <NuxtLink to='/auth' class='redirection-button'>Créer un compte</NuxtLink>
     </div>
 
     <div v-else>

@@ -225,6 +225,8 @@
                     ...storedRecipe
                 }
 
+                console.log(newRecipe)
+
 
                 this.$axios.$post('https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', newRecipe)
                     .then(function (response) {
