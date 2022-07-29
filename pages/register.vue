@@ -11,8 +11,8 @@ import AuthModal from '../components/auth/AuthModal.vue'
 
 export default {
     components: {
-      Header,
-      AuthModal
+      AuthModal,
+      Header
     },
 
     head () {

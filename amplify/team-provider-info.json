@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "yummyingbirdwebapp656aec72": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dgm1u98yiw1es",
+          "type": "cicd"
+        }
       }
     }
   }

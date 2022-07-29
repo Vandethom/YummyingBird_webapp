@@ -159,8 +159,6 @@
 </template>
 
 <script>
-    import { v4 as uuidv4 } from 'uuid'
-
     export default {        
         created() {
             // mutation, though unnused variable, is needed as parameter to subscribe()

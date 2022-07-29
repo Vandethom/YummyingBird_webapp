@@ -1,6 +1,6 @@
 <template>
     <div class='side-panel-container'>
-        <h2>{{ user }}</h2>
+        <!-- <h2>{{ $auth.email }}</h2> -->
         <div class='option-button'>
             <img src="~assets/icons/icon_home.svg" alt="home icon" />
             <NuxtLink class='panel-selection' to="/">Accueil</NuxtLink>
@@ -13,12 +13,12 @@
             <img src="~assets/icons/icon_settings.svg" alt="settings icon" />
             <NuxtLink class='panel-selection' to="/database">Paramètres</NuxtLink>
         </div>
-        <div class='option-button' @click='logOff'>
+        <div class='option-button' @click='logOut'>
             <img
                 src="~assets/icons/icon_logout.svg"
                 alt="logout icon"
             />
-            <NuxtLink class='panel-selection' to="/auth">Déconnexion</NuxtLink>
+            <NuxtLink class='panel-selection' to="/login">Déconnexion</NuxtLink>
         </div>
     </div>
 </template>
@@ -33,8 +33,8 @@
             }
        },
        methods: {
-        logOff() {
-            this.$store.commit('auth/loggedOffUser')
+        logOut() {
+            this.$store.dispatch('auth/logOut')
         }
        }
     }

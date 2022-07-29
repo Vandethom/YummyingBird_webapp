@@ -1,11 +1,21 @@
 <template>
   <div>
     <Header />
-    <SidePanel />
-    <section class='create-recipe-screen'>
-        <CreateRecipePanel />
-        <RecipePreview />
-    </section>
+
+    <div v-if='!$auth.isAuthenticated'>
+        <NuxtLink to='/register' class='redirection-button'>Créer un compte</NuxtLink>
+        <NuxtLink to='/login' class='redirection-button'>Se connecter</NuxtLink>
+    </div>
+
+    <div v-else>
+        <SidePanel />
+        <section class='create-recipe-screen'>
+            <CreateRecipePanel />
+            <RecipePreview />
+        </section>
+    </div>
+    
+    
   </div>
 </template>
 
@@ -22,8 +32,6 @@ export default {
         RecipePreview,
         SidePanel
     },
-    
-    middleware: 'auth',
 
     head () {
         return {
@@ -40,6 +48,20 @@ export default {
         display: flex;
         width: 100vw;
         overflow: hidden;
+    }
+
+    .redirection-button {
+        display: grid;
+        place-items: center;
+        width: 150px;
+        height: 46px;
+        background-color: #69b954;
+        border-radius: 3px;
+        border: none;
+        margin: 14px auto;
+        font-family: 'Barlow';
+        font-style: none;
+        color: "#f2f2f2f2";
     }
 
     @media only screen and (max-width: 900px) {

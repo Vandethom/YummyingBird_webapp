@@ -17,8 +17,6 @@ export default {
       SidePanel,
       RecipeCardsContainer
     },
-
-  middleware: 'auth',
     
     head () {
         return {
