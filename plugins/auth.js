@@ -13,9 +13,13 @@ class AuthService {
         return this.$store.state.auth.user
     }
 
-    // get email () {
-    //     return this.$store.state.auth.user.email
-    // }
+    get id() {
+        return this.$store.state.auth.user.attributes.sub
+    }
+
+    get email () {
+        return this.$store.state.auth.user.attributes.email
+    }
 }
 
 

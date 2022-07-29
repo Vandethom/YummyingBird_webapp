@@ -163,56 +163,56 @@
         created() {
             // mutation, though unnused variable, is needed as parameter to subscribe()
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            this.unsubscribe = this.$store.subscribe((mutation, state) => {
+            this.unsubscribe = this.$store.subscribe( ( mutation, state ) => {
                 this.recipe = state.recipe.recipe.name
             });
         },
 
         methods: {
             storeTitle (e) {
-                this.$store.commit('recipe/storeTitle', e.target.value)
+                this.$store.commit( 'recipe/storeTitle', e.target.value )
             },
 
             storeDescription (e) {
-                this.$store.commit('recipe/storeDescription', e.target.value)
+                this.$store.commit( 'recipe/storeDescription', e.target.value )
             },
             
             storeCategory () {
-                const category = document.getElementById('category').value
-                this.$store.commit('recipe/storeCategory', category)
+                const category = document.getElementById( 'category' ).value
+                this.$store.commit( 'recipe/storeCategory', category )
             },
             
             storePreparationTime (e) {
-                this.$store.commit('recipe/storePreparationTime', e.target.value)
+                this.$store.commit( 'recipe/storePreparationTime', e.target.value )
             },
 
             storeIngredient () {
-                const ingredient = document.getElementById('ingredient').value
-                this.$store.commit('recipe/storeIngredient', ingredient)
+                const ingredient = document.getElementById( 'ingredient' ).value
+                this.$store.commit( 'recipe/storeIngredient', ingredient )
             },
 
             storeDiet (e) {
                 const diet = e.target.id
-                this.$store.commit('recipe/storeDiet', diet)
+                this.$store.commit( 'recipe/storeDiet', diet )
             },
 
             storeStep () {
                 const step = document.getElementById('step').value
-                this.$store.commit('recipe/storeStep', step)
+                this.$store.commit( 'recipe/storeStep', step )
             },
 
             storeOption () {
-                const option = document.getElementById('option').value
-                this.$store.commit('recipe/storeOption', option)
+                const option = document.getElementById( 'option' ).value
+                this.$store.commit( 'recipe/storeOption', option )
             },
 
             storeTool () {
-                const tool = document.getElementById('tool').value
-                this.$store.commit('recipe/storeTool', tool)
+                const tool = document.getElementById( 'tool' ).value
+                this.$store.commit( 'recipe/storeTool', tool )
             },
 
             storeImageUrl (e) {
-                this.$store.commit('recipe/storeImageUrl', e.target.files[0])
+                this.$store.commit( 'recipe/storeImageUrl', e.target.files[0].name )
             },
 
             postRecipe(e) {
@@ -221,21 +221,18 @@
                 const storedRecipe = this.$store.state.recipe.recipe
 
                 const newRecipe = {
-                    authorUuid: "1234567890",
+                    authorUuid: this.$auth.id,
                     ...storedRecipe
                 }
 
-                console.log(newRecipe)
-
-
-                this.$axios.$post('https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', newRecipe)
-                    .then(function (response) {
-                        console.log(response);
+                this.$axios.$post( 'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', newRecipe )
+                    .then( function ( response ) {
+                        console.log( response );
                     })
-                    .catch(function (error) {
-                        console.log(error);
+                    .catch( function ( error ) {
+                        console.log(error );
                     })  
-                this.$store.commit('recipe/clearState')
+                this.$store.commit( 'recipe/clearState' )
                 this.$router.push( '/' )
                 
             }
