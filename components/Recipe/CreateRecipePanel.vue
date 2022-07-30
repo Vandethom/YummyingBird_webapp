@@ -153,7 +153,7 @@
                 >
             </label>
             
-            <button id='create-button' type='submit' class='button' @click='postRecipe'>Publier</button>
+            <button id='create-button' type='submit' class='button' @preventDefault='postRecipe'>Publier</button>
         </form>
     </div>
 </template>
@@ -215,26 +215,17 @@
                 this.$store.commit( 'recipe/storeImageUrl', e.target.files[0].name )
             },
 
-            postRecipe(e) {
-                e.preventDefault()
-                
+            async postRecipe() {
                 const storedRecipe = this.$store.state.recipe.recipe
-
                 const newRecipe = {
                     authorUuid: this.$auth.id,
                     ...storedRecipe
                 }
 
-                this.$axios.$post( 'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', newRecipe )
-                    .then( function ( response ) {
-                        console.log( response );
-                    })
-                    .catch( function ( error ) {
-                        console.log(error );
-                    })  
+                await this.$api.createRecipe( newRecipe )
+
                 this.$store.commit( 'recipe/clearState' )
                 this.$router.push( '/' )
-                
             }
         }
     }

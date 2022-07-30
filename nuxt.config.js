@@ -26,7 +26,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/amplify.js', mode: 'client' },
-    '~/plugins/auth.js'
+    '~/plugins/auth.js',
+    '~/plugins/api.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -40,17 +41,8 @@ export default {
 
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/axios'
   ],
-
-  axios: {
-    proxy: true
-  },
-
-  proxy: {
-    '/api/': { target: 'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe', pathRewrite: {'^/api/': ''}, changeOrigin: true }
-  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   // modules: [
