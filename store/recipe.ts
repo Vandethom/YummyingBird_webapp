@@ -43,7 +43,11 @@ function storeData( key: any, value: any, state: any ) {
     state.recipe[key] = value
 }
 
-
+export const getters = {
+    recipe( state: any ) {
+        return state.recipe
+    }
+}
 
 export const mutations = {   
     clearState(state: any) {

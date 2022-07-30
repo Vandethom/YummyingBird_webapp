@@ -1,7 +1,8 @@
 <template>
+<div>
     <div v-show='recipe' class='preview-container'>
-        <div v-show='recipe.title' class='preview-value'>
-            <h2>{{ recipe.title }}</h2>
+        <div v-show='recipe.name' class='preview-value'>
+            <h2>{{ recipe.name }}</h2>
             <button id='title' @click='deleteValue'>x</button>
             <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
         </div>
@@ -20,8 +21,8 @@
                 </li>
             </ul>
         </div>
-        <div v-show='recipe.preparationTime' class='preview-value'>
-            <p>Durée de préparation : {{ recipe.preparationTime }} min</p>
+        <div v-show='recipe.durationTime' class='preview-value'>
+            <p>Durée de préparation : {{ recipe.durationTime }} min</p>
             <button id='preparationTime' @click='deleteValue'>x</button>
             <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
         </div>
@@ -35,20 +36,20 @@
                 </li>
             </ul>
         </div>
-        <div v-show='recipe.vegan || recipe.porkFree || recipe.glutenFree' class='preview-value'>
+        <div v-show='recipe.isVegan || recipe.isPorkFree || recipe.isGlutenFree' class='preview-value'>
             <p>La recette est sans :</p> 
             <ul>
-                <li v-if='recipe.vegan'>
+                <li v-if='recipe.isVegan'>
                     Viande
                     <button id='vegan' @click='deleteValue'>x</button>
                     <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
                 </li>
-                <li v-if='recipe.porkFree'>
+                <li v-if='recipe.isPorkFree'>
                     Porc
                     <button id='porkFree' @click='deleteValue'>x</button>
                     <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
                 </li>
-                <li v-if='recipe.glutenFree'>
+                <li v-if='recipe.isGlutenFree'>
                     Gluten
                     <button id='glutenFree' @click='deleteValue'>x</button>
                     <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
@@ -89,7 +90,9 @@
             <img :src="recipe.imageUrl" alt="Photo of the recipe">
         </div>
         <p v-if='recipe.imageUrl'>{{ recipe.imageUrl }}</p> -->
-        <div id='open-menu-arrow'>
+        
+    </div>
+    <div id='open-menu-arrow'>
             <img class='arrow' src="@/assets/icons/icon_arrow_left.svg" alt="arrow to left" @click='openPreview'>
         </div>
     </div>
@@ -135,7 +138,7 @@
                     sliderName.id = 'close-menu-arrow'
 
                 } else {
-                    gsap.to('.preview-container', {
+                    gsap.to('.preview-container, #close-menu-arrow', {
                         'transform': 'translateX(95%)'
                     })
                     gsap.to('.arrow', {
@@ -195,13 +198,13 @@
                 }
             }
         }
+    }
 
-        #open-menu-arrow, #close-menu-arrow {
+    #open-menu-arrow, #close-menu-arrow {
             display: grid;
             place-items: center;
             position: relative;
-            top: -80px;
-            left: -50px;
+            margin: 40px -60px;
             width: 80px;
             height: 120px;
             background: #5784BA;
@@ -220,12 +223,10 @@
                 filter: contrast(100%);
             }
         }
-    }
 
     @media only screen and (max-width: 1440px) {
         .preview-container {
             display: none;
         }
     }
-
 </style>

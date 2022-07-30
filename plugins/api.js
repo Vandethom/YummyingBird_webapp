@@ -24,7 +24,7 @@ class Api {
   }
 }
 
-export default async ({ store }) => {
+export default ({ store }) => {
     const api = new Api( store )
 
     Vue.prototype.$api = api
