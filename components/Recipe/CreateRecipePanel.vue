@@ -218,9 +218,9 @@
             async postRecipe() {
                 const storedRecipe = this.$store.state.recipe.recipe
                 const newRecipe = {
-                    authorUuid: this.$auth.id,
-                    ...storedRecipe
-                }
+                        authorUuid: this.$auth.id,
+                        ...storedRecipe
+                    }
 
                 await this.$api.createRecipe( newRecipe )
 
