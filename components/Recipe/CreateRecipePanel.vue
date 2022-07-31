@@ -159,7 +159,14 @@
 </template>
 
 <script>
-    export default {        
+    export default {
+        computed: {
+            /*
+                    Change input Ids to avoid confusion with preview ids bearing the same name
+                    Create function to uncheck checkbox whenever corresponding value is deleted in preview
+             */
+        },
+
         created() {
             // mutation, though unnused variable, is needed as parameter to subscribe()
             // eslint-disable-next-line @typescript-eslint/no-unused-vars

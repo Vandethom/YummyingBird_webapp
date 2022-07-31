@@ -1,59 +1,104 @@
 <template>
 <div>
     <div v-show='recipe' class='preview-container'>
-        <PreviewValue :id='"title"' :value='recipe.name' :type=' "title" '/>
-        <PreviewValue :value='recipe.description' :type=' "text" '/>
+        <PreviewValue
+            id='name'
+            :value='recipe.name'
+            :type=' "title" '
+        />
+        <PreviewValue
+            id='description'
+            :value='recipe.description'
+            :type=' "text" '
+        />
         <div v-show='recipe.categories.length > 0' class='preview-value'>
             <ul>
                 <h4>Catégories:</h4>
-                <PreviewValue v-for='category in recipe.categories' :id='"categories_" + recipe.categories.indexOf(category, fromIndex)' :key='category' :value='category' :type=' "arrayElement" ' />
+                <PreviewValue
+                    v-for='category in recipe.categories'
+                    :id='"categories_" + recipe.categories.indexOf(category, fromIndex)'
+                    :key='category'
+                    :value='category'
+                    :type=' "arrayElement" '
+                />
             </ul>
         </div>
-        <PreviewValue :value=recipe.durationTime :type='"text"'/>
+        <PreviewValue
+            id='durationTime'
+            :value=recipe.durationTime
+            :type='"text"'
+        />
         <div v-show='recipe.ingredients.length > 0' class='preview-value'>
             <ul>
                 <h4>Ingrédients:</h4>
-                <PreviewValue v-for='ingredient in recipe.ingredients' :key='ingredient' :value='ingredient' :type=' "arrayElement" ' />
+                <PreviewValue
+                    v-for='ingredient in recipe.ingredients'
+                    :id='"ingredients_" + recipe.categories.indexOf(category, fromIndex)'
+                    :key='ingredient'
+                    :value='ingredient'
+                    :type=' "arrayElement" '
+                />
 
             </ul>
         </div>
         <div v-show='recipe.isVegan || recipe.isPorkFree || recipe.isGlutenFree' class='preview-value'>
             <p>La recette est sans :</p> 
             <ul>
-                <li v-if='recipe.isVegan'>
-                    Viande
-                    <button id='vegan' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
-                <li v-if='recipe.isPorkFree'>
-                    Porc
-                    <button id='porkFree' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
-                <li v-if='recipe.isGlutenFree'>
-                    Gluten
-                    <button id='glutenFree' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
+                <PreviewValue
+                    v-show='recipe.isVegan'
+                    id='isVegan'
+                    :value='"viande"'
+                    :type=' "boolean" '
+                    :attribute='viande'
+                />
+                <PreviewValue 
+                    v-show='recipe.isPorkFree' 
+                    id='isPorkFree' 
+                    :value='"porc"' 
+                    :type=' "boolean" ' 
+                    :attribute='porc'
+                />
+                <PreviewValue 
+                    v-show='recipe.isGlutenFree' 
+                    id='isGlutenFree' 
+                    :value='"gluten"' 
+                    :type=' "boolean" ' 
+                    :attribute='gluten'
+                />
             </ul>
         </div>
         <div v-show='recipe.tools.length > 0' class='preview-value'>
             <ul>
                 <h4>Ustensiles:</h4>
-                <PreviewValue v-for='tool in recipe.tools' :key='tool' :value='tool' :type=' "arrayElement" ' />
+                <PreviewValue
+                    v-for='tool in recipe.tools'
+                    :id='"tools_" + recipe.categories.indexOf(category, fromIndex)'
+                    :key='tool' :value='tool'
+                    :type=' "arrayElement" '
+                />
             </ul>
         </div>
         <div v-show='recipe.steps.length > 0' class='preview-value'>
             <ul>
                 <h4>Etapes de préparation:</h4>
-                <PreviewValue v-for='step in recipe.steps' :key='step' :value='step' :type=' "arrayElement" ' />
+                <PreviewValue
+                    v-for='step in recipe.steps'                    
+                    :id='"steps_" + recipe.categories.indexOf(category, fromIndex)'
+                    :key='step' :value='step'
+                    :type=' "arrayElement" '
+                />
 
             </ul>
         </div>
         <div v-show='recipe.options.length > 0' class='preview-value'>
             <ul>
                 <h4>Options et astuces:</h4>
-                <PreviewValue v-for='option in recipe.options' :key='option' :value='option' :type=' "arrayElement" ' />
+                <PreviewValue
+                    v-for='option in recipe.options'
+                    :id='"options_" + recipe.categories.indexOf(category, fromIndex)'
+                    :key='option' :value='option'
+                    :type=' "arrayElement" '
+                />
 
             </ul>
         </div>

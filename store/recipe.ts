@@ -77,7 +77,7 @@ export const mutations = {
 
         switch (typeof state.recipe[recipeKey]){
             case 'string':
-                state.recipe[key] = defaultRecipeState[key]
+                state.recipe[key] = ''
                 break
             
             case 'number':
@@ -85,7 +85,7 @@ export const mutations = {
                 break
 
             case 'boolean': 
-                state.recipe[ key ] = !state.recipe[ key ]
+                state.recipe[ key ] = false
                 break
 
             case 'object':

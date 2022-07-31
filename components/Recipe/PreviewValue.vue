@@ -19,9 +19,11 @@
             <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
         </li>
 
-        <div v-else-if=' type === "boolean" '>
-            <!-- TODO !!! -->
-        </div>
+        <li v-else-if=' type === "boolean" '>
+            {{ value }}
+            <button :id='id' @click='deleteValue'>x</button>
+            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+        </li>
 
     </div>
 </template>
@@ -41,24 +43,19 @@
                 type: Array,
                 default: () => []
             },
+            'attribute': {
+                type: String,
+                default: ''
+            },
             'type': {
                 type: String,
                 default: ''
             }
         },
-        data() {
-            return {
-                datas: []
-            }
-        },
-        mounted() {
-            this.datas = JSON.parse(JSON.stringify(this.elements));
-        },
 
         methods: {
             deleteValue(e) {
                 const value = e.target.id
-                console.log('Our elements I guess ::: ', this.datas)
                 
                 this.$store.commit('recipe/deleteData', value)
             }
@@ -66,7 +63,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .preview-value {
         display: grid;
         grid-template-columns: 32fr 1fr 1fr;
