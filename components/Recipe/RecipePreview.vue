@@ -1,39 +1,20 @@
 <template>
 <div>
     <div v-show='recipe' class='preview-container'>
-        <div v-show='recipe.name' class='preview-value'>
-            <h2>{{ recipe.name }}</h2>
-            <button id='title' @click='deleteValue'>x</button>
-            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-        </div>
-        <div v-show='recipe.description' class='preview-value'>
-            <p>{{ recipe.description }}</p>
-            <button id='description' @click='deleteValue'>x</button>
-            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-        </div>
+        <PreviewValue :id='"title"' :value='recipe.name' :type=' "title" '/>
+        <PreviewValue :value='recipe.description' :type=' "text" '/>
         <div v-show='recipe.categories.length > 0' class='preview-value'>
             <ul>
                 <h4>Catégories:</h4>
-                <li v-for='category in recipe.categories' :id='"category"+index' :key='category'>
-                    {{ category }}
-                    <button :id='"categories_" + recipe.categories.indexOf(category, fromIndex)' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
+                <PreviewValue v-for='category in recipe.categories' :id='"categories_" + recipe.categories.indexOf(category, fromIndex)' :key='category' :value='category' :type=' "arrayElement" ' />
             </ul>
         </div>
-        <div v-show='recipe.durationTime' class='preview-value'>
-            <p>Durée de préparation : {{ recipe.durationTime }} min</p>
-            <button id='preparationTime' @click='deleteValue'>x</button>
-            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-        </div>
+        <PreviewValue :value=recipe.durationTime :type='"text"'/>
         <div v-show='recipe.ingredients.length > 0' class='preview-value'>
             <ul>
                 <h4>Ingrédients:</h4>
-                <li v-for='ingredient in recipe.ingredients' :key='ingredient'>
-                    {{ ingredient }}
-                    <button :id='"ingredients_" + recipe.ingredients.indexOf(ingredient, fromIndex)' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
+                <PreviewValue v-for='ingredient in recipe.ingredients' :key='ingredient' :value='ingredient' :type=' "arrayElement" ' />
+
             </ul>
         </div>
         <div v-show='recipe.isVegan || recipe.isPorkFree || recipe.isGlutenFree' class='preview-value'>
@@ -59,31 +40,21 @@
         <div v-show='recipe.tools.length > 0' class='preview-value'>
             <ul>
                 <h4>Ustensiles:</h4>
-                <li v-for='tool in recipe.tools' :key='tool'>
-                    {{ tool }}
-                    <button :id='"tools_" + recipe.tools.indexOf(tool, fromIndex)' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
+                <PreviewValue v-for='tool in recipe.tools' :key='tool' :value='tool' :type=' "arrayElement" ' />
             </ul>
         </div>
         <div v-show='recipe.steps.length > 0' class='preview-value'>
             <ul>
                 <h4>Etapes de préparation:</h4>
-                <li v-for='step in recipe.steps' :key='step'>
-                    {{ step }}   
-                    <button :id='"steps_" + recipe.steps.indexOf(step, fromIndex)' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
+                <PreviewValue v-for='step in recipe.steps' :key='step' :value='step' :type=' "arrayElement" ' />
+
             </ul>
         </div>
         <div v-show='recipe.options.length > 0' class='preview-value'>
             <ul>
                 <h4>Options et astuces:</h4>
-                <li v-for='option in recipe.options' :key='option'>
-                    {{ option }}
-                    <button :id='"options_" + recipe.options.indexOf(option, fromIndex)' @click='deleteValue'>x</button>
-                    <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
-                </li>
+                <PreviewValue v-for='option in recipe.options' :key='option' :value='option' :type=' "arrayElement" ' />
+
             </ul>
         </div>
         <!-- <div v-show='recipe.photo' class='preview-value'>
@@ -100,8 +71,13 @@
 
 <script>
     import { gsap } from 'gsap'
+    import PreviewValue from './PreviewValue.vue'
 
     export default {
+        components: {
+            PreviewValue
+        },
+
         'computed': {
             recipe() {
                 return this.$store.state.recipe.recipe
@@ -117,12 +93,6 @@
         },
 
         methods: {
-            deleteValue(e) {
-                const value = e.target.id
-                
-                this.$store.commit('recipe/deleteData', value)
-            },
-
             openPreview() {
                 const sliderName = document.getElementById('open-menu-arrow') || document.getElementById('close-menu-arrow')
                 
@@ -162,42 +132,6 @@
         right: -120px;
         border-radius: 7px 0 0 7px;
         transform: translateX(97%);
-
-        .preview-value {
-            display: grid;
-            grid-template-columns: 32fr 1fr 1fr;
-            place-items: center;
-            word-wrap: break-word;
-            margin-right: 80px;
-
-            & > * {
-            max-width: 16vw;
-            }
-
-            button {
-                display: grid;
-                place-items: center;
-                margin-left: 8px;
-                width: 25px;
-                height: 25px;
-            }
-
-            .icon-edit {
-                margin: auto;
-                width: 13px;
-                height: 13px;
-            }
-
-            ul {
-                list-style-type: none;
-
-                li {
-                    margin-bottom: 6px;
-                    display: grid;
-                    grid-template-columns: 8fr 1fr 1fr;
-                }
-            }
-        }
     }
 
     #open-menu-arrow, #close-menu-arrow {
