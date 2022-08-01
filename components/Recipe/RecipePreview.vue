@@ -106,11 +106,11 @@
             <img :src="recipe.imageUrl" alt="Photo of the recipe">
         </div>
         <p v-if='recipe.imageUrl'>{{ recipe.imageUrl }}</p> -->
-        
+            <div id='open-menu-arrow'>
+                <img class='arrow' src="@/assets/icons/icon_arrow_left.svg" alt="arrow to left" @click='openPreview'>
+            </div>
     </div>
-    <div id='open-menu-arrow'>
-            <img class='arrow' src="@/assets/icons/icon_arrow_left.svg" alt="arrow to left" @click='openPreview'>
-        </div>
+
     </div>
 </template>
 
@@ -183,7 +183,7 @@
             display: grid;
             place-items: center;
             position: relative;
-            margin: 40px -60px;
+            margin-left: -40px;
             width: 80px;
             height: 120px;
             background: #5784BA;

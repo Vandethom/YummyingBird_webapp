@@ -11,7 +11,7 @@
             <label>
                 <span>Titre :</span>
                 <input 
-                    id='name'
+                    id='name-input'
                     type='text' 
                     placeholder='Gratin de citrouille' 
                     name='name'
@@ -21,7 +21,7 @@
             <label>
                 <span>Description :</span>
                 <textarea 
-                    id='description'
+                    id='description-input'
                     type='text' 
                     placeholder='Une souple facile et simple à réaliser...' 
                     name='description'
@@ -31,7 +31,7 @@
             <label>
                 <span>Catégorie :</span>
                 <input 
-                    id='category'
+                    id='category-input'
                     type='text' 
                     placeholder='Méditerranéen' 
                     name='category' 
@@ -45,7 +45,7 @@
             <label>
                 <span>Durée :</span>
                 <input 
-                    id='durationTime'
+                    id='durationTime-input'
                     type='number' 
                     placeholder='45' 
                     name='durationTime'
@@ -55,7 +55,7 @@
             <label>
                 <span>Ingrédients :</span>
                 <input 
-                    id='ingredient'
+                    id='ingredient-input'
                     type='text' 
                     placeholder='Gratin de citrouille' 
                     name='ingredient'
@@ -70,7 +70,7 @@
                 <legend>La recette est-elle :</legend>
                 <div>
                     <input
-                        id='isVegan'
+                        id='isVegan-input'
                         type='checkbox'
                         name='isVegan'
                         @click='storeDiet'
@@ -79,7 +79,7 @@
                 </div>
                 <div>
                     <input
-                        id='isPorkFree'
+                        id='isPorkFree-input'
                         type='checkbox'
                         name='isPorkFree'
                         @click='storeDiet'
@@ -88,7 +88,7 @@
                 </div>
                 <div>
                     <input
-                        id='isGlutenFree'
+                        id='isGlutenFree-input'
                         type='checkbox'
                         name='isGlutenFree'
                         @click='storeDiet'
@@ -99,7 +99,7 @@
             <label>
                 <span>Etapes :</span>
                 <textarea 
-                    id='step'
+                    id='step-input'
                     type='text' 
                     placeholder='Découper les légumes en dés...' 
                     name='step' 
@@ -113,7 +113,7 @@
             <label>
                 <span>Options :</span>
                 <textarea 
-                    id='option'
+                    id='option-input'
                     type='text' 
                     placeholder='Ajouter un topping de cacahuètes en fin de cuisson...' 
                     name='option' 
@@ -127,7 +127,7 @@
             <label>
                 <span>Ustensiles :</span>
                 <input 
-                    id='tool'
+                    id='tool-input'
                     type='text' 
                     placeholder='Gratin de citrouille' 
                     name='tool' 
@@ -141,7 +141,7 @@
             <label id='uploadFile-label'>
                 <span>Photo :</span>
                 <input 
-                    id='imageUrl'
+                    id='imageUrl-input'
                     type='file'
                     name='imageUrl' 
                     accept='image/png, image/jpg, image/jpeg'
@@ -185,7 +185,7 @@
             },
             
             storeCategory () {
-                const category = document.getElementById( 'category' ).value
+                const category = document.getElementById( 'category-input' ).value
                 this.$store.commit( 'recipe/storeCategory', category )
             },
             
@@ -194,7 +194,7 @@
             },
 
             storeIngredient () {
-                const ingredient = document.getElementById( 'ingredient' ).value
+                const ingredient = document.getElementById( 'ingredient-input' ).value
                 this.$store.commit( 'recipe/storeIngredient', ingredient )
             },
 
@@ -204,17 +204,17 @@
             },
 
             storeStep () {
-                const step = document.getElementById('step').value
+                const step = document.getElementById('step-input').value
                 this.$store.commit( 'recipe/storeStep', step )
             },
 
             storeOption () {
-                const option = document.getElementById( 'option' ).value
+                const option = document.getElementById( 'option-input' ).value
                 this.$store.commit( 'recipe/storeOption', option )
             },
 
             storeTool () {
-                const tool = document.getElementById( 'tool' ).value
+                const tool = document.getElementById( 'tool-input' ).value
                 this.$store.commit( 'recipe/storeTool', tool )
             },
 
