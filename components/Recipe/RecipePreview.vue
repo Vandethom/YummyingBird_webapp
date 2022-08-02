@@ -174,7 +174,7 @@
         width: 30vw;
         position: relative;
         padding: 16px;
-        right: -120px;
+        right: -260px;
         border-radius: 7px 0 0 7px;
         transform: translateX(97%);
     }

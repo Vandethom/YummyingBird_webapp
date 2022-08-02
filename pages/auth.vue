@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+    .body {
+      margin: 0;
+    }
     .header-container {
       margin-left: 15%;
     }

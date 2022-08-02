@@ -304,7 +304,7 @@
                 }
 
                 input {
-                    width: 500px;
+                    width: 315px;
                     height: 40px;
                 }
 

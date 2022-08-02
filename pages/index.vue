@@ -32,6 +32,8 @@ export default {
         SidePanel
     },
 
+    middleware: ['auth'],
+
     head () {
         return {
             bodyAttrs: {
@@ -46,6 +48,8 @@ export default {
     .create-recipe-screen {
         display: flex;
         width: 100vw;
+        margin: 0;
+        height: 100vh;
         overflow: hidden;
     }
 

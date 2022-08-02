@@ -2,6 +2,7 @@ import { Auth } from 'aws-amplify'
 
 export const state = () => ({
     user: {},
+    isAuthenticated: false,
     signedIn: false
 })
 
@@ -11,15 +12,19 @@ export const defaultUserState = () => ({
 })
 
 export const getters = {
-    user(state) {
+    user( state ) {
         return state.user
+    },
+
+    isAuthenticated( state ) {
+        return state.isAuthenticated
     }
 }
 
 export const mutations = {
     set( state, user ) {
         state.isAuthenticated = !!user
-        state.user.attributes = user
+        state.user.attributes.name = user
     },
 
     loggedInUser( state, user ) {
