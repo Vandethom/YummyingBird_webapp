@@ -42,14 +42,15 @@
 
 <style lang="scss" scoped>
     .side-panel-container {
-        position: absolute;
+        position: fixed;
         left: 0;
-        top: 0;
+        top: 17vh;
         background-color: #F7F6CF;
         width: 12vw;
         min-width: 200px;
-        // height: 100vh;
+        height: 45vh;
         border-left: 1px solid black;
+        border-radius: 0 18px 18px 0;
         padding-top: 100px;
 
         h2 {
