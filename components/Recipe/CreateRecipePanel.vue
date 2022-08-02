@@ -36,11 +36,7 @@
                     placeholder='Méditerranéen' 
                     name='category' 
                 />
-                <img
-                    src='~assets/icons/icon-add.svg'
-                    alt='Icon add one'
-                    @click='storeCategory'
-                />
+                <img src='~/assets/icons/button_round_add.svg' class='button-add-one' @click='storeCategory'/>
             </label>
             <label>
                 <span>Durée :</span>
@@ -60,11 +56,22 @@
                     placeholder='Gratin de citrouille' 
                     name='ingredient'
                 />
-                <img
-                    src='~assets/icons/icon-add.svg'
-                    alt='Icon add one'
-                    @click='storeIngredient'
-                />
+                <div class='input-measureUnit'>
+                    <input
+                        id='ingredient-measure-input'
+                        type="number"
+                        placeholder=0
+                        name='ingredientQuantity'
+                    >
+                    <select id='measure-unit' class='measure-unit' name='measureUnit'>
+                        <option id='g-unit' class='unit-option' value='g'>g</option>
+                        <option id='kg-unit' class='unit-option' value='kg'>kg</option>
+                        <option id='ml-unit' class='unit-option' value='ml'>ml</option>
+                        <option id='cl-unit' class='unit-option' value='cl'>cl</option>
+                        <option id='ts-unit' class='unit-option' value='ts'>ts</option>
+                    </select>
+                    <img src='~/assets/icons/button_round_add.svg' class='button-add-one' @click='storeIngredient'/>
+                </div>
             </label>
             <fieldset>
                 <legend>La recette est-elle :</legend>
@@ -103,12 +110,8 @@
                     type='text' 
                     placeholder='Découper les légumes en dés...' 
                     name='step' 
-                />
-                <img
-                    src='~assets/icons/icon-add.svg'
-                    alt='Icon add one'
-                    @click='storeStep'
-                />
+                />                
+                <img src='~/assets/icons/button_round_add.svg' class='button-add-one' @click='storeStep'/>
             </label>
             <label>
                 <span>Options :</span>
@@ -118,11 +121,7 @@
                     placeholder='Ajouter un topping de cacahuètes en fin de cuisson...' 
                     name='option' 
                 />
-                <img
-                    src='~assets/icons/icon-add.svg'
-                    alt='Icon add one'
-                    @click='storeOption'
-                />
+                <img src='~/assets/icons/button_round_add.svg' class='button-add-one' @click='storeOption'/>
             </label>
             <label>
                 <span>Ustensiles :</span>
@@ -132,11 +131,7 @@
                     placeholder='Gratin de citrouille' 
                     name='tool' 
                 />
-                <img
-                    src='~assets/icons/icon-add.svg'
-                    alt='Icon add one'
-                    @click='storeTool'
-                />
+                <img src='~/assets/icons/button_round_add.svg' class='button-add-one' @click='storeTool'/>
             </label>
             <label id='uploadFile-label'>
                 <span>Photo :</span>
@@ -194,7 +189,13 @@
             },
 
             storeIngredient () {
-                const ingredient = document.getElementById( 'ingredient-input' ).value
+                const ingredientName = document.getElementById( 'ingredient-input' ).value
+                const unit = document.getElementById('measure-unit').value
+                const measure = document.getElementById( 'ingredient-measure-input' ).value
+                const ingredient = {
+                    [ingredientName]: `${measure}${unit}`
+                }
+                
                 this.$store.commit( 'recipe/storeIngredient', ingredient )
             },
 
@@ -231,7 +232,7 @@
 
                 await this.$api.createRecipe( newRecipe )
 
-                this.$store.commit( 'recipe/clearState' )
+                // this.$store.commit( 'recipe/clearState' )
                 this.$router.push( '/' )
             }
         }
@@ -253,7 +254,7 @@
                 font-weight: bold;
                 text-align: center;
             }
-        
+    
             .buttons {
                 .button {
                     border-radius: 6px;
@@ -276,6 +277,9 @@
             }
         }
 
+        .button-add-one {
+            margin: 4px 12px;
+        }
         form {
             label:not(.diet-label) {
                 display: grid;
@@ -312,6 +316,29 @@
                     width: 34px;
                     height: 34px;
                     cursor: pointer;
+                }
+
+                .input-measureUnit {
+                    display: grid;
+                    grid-template-columns: 72px 40px 56px;
+                    place-items: center;
+
+                    input {
+                        width: 60px;
+                    }
+
+                    .measure-unit {
+                        margin-top: 4px;
+                        background: #5784BA;
+                        color: #F2F2F2;
+                        width: 44px;
+                        height: 42px;
+                        border-radius: 0 6px 6px 0;
+
+                        .unit-option {
+                            font-size: 16px;
+                        }
+                    }
                 }
             }
 

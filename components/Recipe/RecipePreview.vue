@@ -35,7 +35,7 @@
                     v-for='ingredient in recipe.ingredients'
                     :id='"ingredients_" + recipe.categories.indexOf(category, fromIndex)'
                     :key='ingredient'
-                    :value='ingredient'
+                    :value='Object.keys(ingredient)[0] + ": " + ingredient[Object.keys(ingredient)[0]]'
                     :type=' "arrayElement" '
                 />
 
@@ -116,7 +116,7 @@
 
 <script>
     import { gsap } from 'gsap'
-    import PreviewValue from './PreviewValue.vue'
+    import PreviewValue from './utils/PreviewValue.vue'
 
     export default {
         components: {
@@ -174,7 +174,7 @@
         width: 30vw;
         position: relative;
         padding: 16px;
-        right: -260px;
+        right: -175px;
         border-radius: 7px 0 0 7px;
         transform: translateX(97%);
     }
