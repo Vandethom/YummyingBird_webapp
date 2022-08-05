@@ -1,30 +1,37 @@
 <template>
-    <div v-show='value' class='preview-value'>
+    <div v-show='value'>
 
-        <div v-if=' type === "title" '>
+        <div v-if=' type === "title" ' class='preview-value'>
             <h2>{{ value }}</h2>
-            <button :id='id' @click='deleteValue'>x</button>
-            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            <div>
+                <button :id='id' @click='deleteValue'>x</button>
+                <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            </div>
         </div>
         
-        <div v-else-if=' type === "text" ' :type=type>
+        <div v-else-if=' type === "text" ' class='preview-value' :type=type>
             <p>{{ value }}</p>
-            <button :id='id' @click='deleteValue'>x</button>
-            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            <div>
+                <button :id='id' @click='deleteValue'>x</button>
+                <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            </div>
         </div>
 
-        <li v-else-if=' type === "arrayElement" '>
+        <li v-else-if=' type === "arrayElement" ' class='preview-value'>
             {{ value }}
-            <button :id='id' @click='deleteValue'>x</button>
-            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            <div>
+                <button :id='id' @click='deleteValue'>x</button>
+                <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            </div>
         </li>
 
-        <li v-else-if=' type === "boolean" '>
+        <li v-else-if=' type === "boolean" ' class='preview-value'>
             {{ value }}
-            <button :id='id' @click='deleteValue'>x</button>
-            <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            <div>
+                <button :id='id' @click='deleteValue'>x</button>
+                <button><img class='icon-edit' src='@/assets/icons/icon_edit.svg'></button>
+            </div>
         </li>
-
     </div>
 </template>
 
@@ -65,12 +72,15 @@
 
 <style lang="scss">
     .preview-value {
-        display: grid;
-        grid-template-columns: 32fr 1fr 1fr;
-        place-items: center;
+        width: 25vw;
+        display: flex;
+        justify-content: space-between;
         word-wrap: break-word;
-        margin-right: 80px;
+        margin:auto;
 
+        div {
+            display: flex;
+        }
         & > * {
         max-width: 16vw;
         }

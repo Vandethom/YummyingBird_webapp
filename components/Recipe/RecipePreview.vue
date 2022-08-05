@@ -33,7 +33,7 @@
                 <h4>Ingrédients:</h4>
                 <PreviewValue
                     v-for='ingredient in recipe.ingredients'
-                    :id='"ingredients_" + recipe.categories.indexOf(category, fromIndex)'
+                    :id='"ingredients_" + recipe.categories.indexOf(ingredient, fromIndex)'
                     :key='ingredient'
                     :value='Object.keys(ingredient)[0] + ": " + ingredient[Object.keys(ingredient)[0]]'
                     :type=' "arrayElement" '
@@ -72,7 +72,7 @@
                 <h4>Ustensiles:</h4>
                 <PreviewValue
                     v-for='tool in recipe.tools'
-                    :id='"tools_" + recipe.categories.indexOf(category, fromIndex)'
+                    :id='"tools_" + recipe.tools.indexOf(tool, fromIndex)'
                     :key='tool' :value='tool'
                     :type=' "arrayElement" '
                 />
@@ -83,7 +83,7 @@
                 <h4>Etapes de préparation:</h4>
                 <PreviewValue
                     v-for='step in recipe.steps'                    
-                    :id='"steps_" + recipe.categories.indexOf(category, fromIndex)'
+                    :id='"steps_" + recipe.steps.indexOf(step, fromIndex)'
                     :key='step' :value='step'
                     :type=' "arrayElement" '
                 />
@@ -95,7 +95,7 @@
                 <h4>Options et astuces:</h4>
                 <PreviewValue
                     v-for='option in recipe.options'
-                    :id='"options_" + recipe.categories.indexOf(category, fromIndex)'
+                    :id='"options_" + recipe.options.indexOf(option, fromIndex)'
                     :key='option' :value='option'
                     :type=' "arrayElement" '
                 />
@@ -119,6 +119,7 @@
     import PreviewValue from './utils/PreviewValue.vue'
 
     export default {
+
         components: {
             PreviewValue
         },
@@ -174,7 +175,7 @@
         width: 30vw;
         position: relative;
         padding: 16px;
-        right: -175px;
+        right: -12vw;
         border-radius: 7px 0 0 7px;
         transform: translateX(97%);
     }

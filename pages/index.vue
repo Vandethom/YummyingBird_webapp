@@ -49,7 +49,6 @@ export default {
         display: flex;
         width: 100vw;
         margin: 0;
-        height: 100vh;
         overflow: hidden;
     }
 
