@@ -64,6 +64,7 @@
             deleteValue(e) {
                 const value = e.target.id
                 
+                document.getElementById(`${value}-input`).checked = false
                 this.$store.commit('recipe/deleteData', value)
             }
         }

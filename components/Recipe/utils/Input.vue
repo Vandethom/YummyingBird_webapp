@@ -78,8 +78,7 @@
             <label class='diet-label' for='isGlutenFree'>sans gluten</label>
         </div>
     </fieldset>
-
-    
+  
     <label v-else-if=' name === "imageUrl" '>
         <span>Photo :</span>
         <input 
@@ -197,7 +196,7 @@
             },
 
             storeDiet (e) {
-                const diet = e.target.id
+                const diet = e.target.name
                 this.$store.commit( 'recipe/storeDiet', diet )
             },
 

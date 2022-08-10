@@ -19,29 +19,10 @@ export const state = () => ({
     }
 })
 
-// const defaultRecipeState: any = () => ({
-//         name: '',
-        
-//         description: '',
-//         categories: [],
-//         durationTime: 0,
-//         ingredients: [],
-
-//         isVegan: false,
-//         isGlutenFree: false,
-//         isPorkFree: false,
-
-//         steps: [],
-//         options: [],
-//         tools: [],
-
-//         imageUrl: ''
-//     })
-
-
 function storeData( key: any, value: any, state: any ) {
     state.recipe[key] = value
 }
+
 
 export const getters = {
     recipe( state: any ) {
