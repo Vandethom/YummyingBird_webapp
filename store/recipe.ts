@@ -19,24 +19,24 @@ export const state = () => ({
     }
 })
 
-const defaultRecipeState: any = () => ({
-        name: '',
+// const defaultRecipeState: any = () => ({
+//         name: '',
         
-        description: '',
-        categories: [],
-        durationTime: 0,
-        ingredients: [],
+//         description: '',
+//         categories: [],
+//         durationTime: 0,
+//         ingredients: [],
 
-        isVegan: false,
-        isGlutenFree: false,
-        isPorkFree: false,
+//         isVegan: false,
+//         isGlutenFree: false,
+//         isPorkFree: false,
 
-        steps: [],
-        options: [],
-        tools: [],
+//         steps: [],
+//         options: [],
+//         tools: [],
 
-        imageUrl: ''
-    })
+//         imageUrl: ''
+//     })
 
 
 function storeData( key: any, value: any, state: any ) {

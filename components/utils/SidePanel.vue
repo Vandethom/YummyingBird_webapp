@@ -34,7 +34,7 @@
        },
        methods: {
         logOut() {
-            this.$store.dispatch('auth/logOut')
+            this.$store.commit('auth/clearState')
         }
        }
     }

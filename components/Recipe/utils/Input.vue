@@ -78,6 +78,22 @@
             <label class='diet-label' for='isGlutenFree'>sans gluten</label>
         </div>
     </fieldset>
+
+    
+    <label v-else-if=' name === "imageUrl" '>
+        <span>Photo :</span>
+        <input 
+            :id='id'
+            type='file'
+            :name='name' 
+            accept='image/png, image/jpg, image/jpeg'
+            @change='storeData'
+        />
+        <img
+            src='~assets/icons/icon_uploadFile.png'
+            alt='File uploading icon'
+        >
+    </label>
 </template>
 
 <script>

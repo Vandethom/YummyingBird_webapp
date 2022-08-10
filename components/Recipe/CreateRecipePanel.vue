@@ -67,20 +67,11 @@
                 :name=' "tool" '
                 :event='storeTool'
             />
-            <label id='uploadFile-label'>
-                <span>Photo :</span>
-                <input 
-                    id='imageUrl-input'
-                    type='file'
-                    name='imageUrl' 
-                    accept='image/png, image/jpg, image/jpeg'
-                    @change='storeImageUrl'
-                />
-                <img
-                    src='~assets/icons/icon_uploadFile.png'
-                    alt='File uploading icon'
-                >
-            </label>
+            <Input 
+                :id=' "imageUrl-input" '
+                :name=' "imageUrl" '
+                :event='storeImageUrl'
+            />
         </form>
     </div>
 </template>
@@ -168,103 +159,6 @@
         .button-add-one {
             margin: 4px 12px;
         }
-        // form {
-        //     label:not(.diet-label) {
-        //         display: grid;
-        //         grid-template-columns: minmax(5vw, max-content) minmax(8vw, max-content) 20%;
-        //         place-items: center left;
-        //         margin-top: 24px;
-        //         font-family: 'Barlow Condensed';
-        //         font-size: 20px;
-        //         font-weight: bold;
-
-                
-
-        //         input, textarea {
-        //             padding-left: 16px;
-        //             background-color: #B6D8F2;
-        //             border: none;
-        //             border-radius: 6px;
-        //             font-family: 'Barlow Light';
-        //             font-size: 16px;
-        //             margin: 4px 10px 0 6px;
-        //         }
-
-        //         textarea {
-        //             padding: 16px;
-        //             width: 300px;
-        //         }
-
-        //         input {
-        //             width: 315px;
-        //             height: 40px;
-        //         }
-
-        //         img {
-        //             width: 34px;
-        //             height: 34px;
-        //             cursor: pointer;
-        //         }
-
-        //         .input-measureUnit {
-        //             display: grid;
-        //             grid-template-columns: 72px 40px 56px;
-        //             place-items: center;
-
-        //             input {
-        //                 width: 60px;
-        //             }
-
-        //             .measure-unit {
-        //                 margin-top: 4px;
-        //                 background: #5784BA;
-        //                 color: #F2F2F2;
-        //                 width: 44px;
-        //                 height: 42px;
-        //                 border-radius: 0 6px 6px 0;
-
-        //                 .unit-option {
-        //                     font-size: 16px;
-        //                 }
-        //             }
-        //         }
-        //     }
-
-        //     fieldset {
-        //         margin-top: 18px;
-                
-        //         legend {
-        //             margin-top: 24px;
-        //             font-family: 'Barlow Condensed';
-        //             font-size: 20px;
-        //             font-weight: bold;
-        //         }
-                   
-        //     }
-        //     #durationTime, #category, #ingredients, #imageUrl {
-        //         width: 150px;
-        //     }
-
-        //     #uploadFile-label {
-        //         display: grid;
-        //         grid-template-columns: 60px 60px;
-        //         place-items: center;
-        //         width: 140px;
-        //         height: 40px;
-        //         margin-left: 5.5vw;
-        //         padding-left: 16px;
-        //         background-color: #B6D8F2;
-        //         border: none;
-        //         border-radius: 6px;
-        //         font-family: 'Barlow Light';
-        //         font-size: 14px;
-        //         cursor: pointer;
-
-        //         input {
-        //             display: none;
-        //         }
-        //     }
-        // }
 
         @media only screen and (max-width: 900px) {
             input {

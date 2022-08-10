@@ -24,15 +24,19 @@ export const getters = {
 export const mutations = {
     set( state, user ) {
         state.isAuthenticated = !!user
-        state.user.attributes.name = user
+        state.user = user
+    },
+
+    clearState( state ) {
+        state.user = {}
     },
 
     loggedInUser( state, user ) {
-        state.user.attributes = user
+        state.user = user
     },
 
     loggedOffUser( state ) {
-        state.user.attributes = {}
+        state.user = {}
     }
 }
 
@@ -70,6 +74,6 @@ export const actions = {
 
     async logOut( { commit } ) {
         await Auth.signOut()
-        commit( 'set', this.$store.defaultUserState )
+        commit( 'set', defaultUserState )
     }
 }

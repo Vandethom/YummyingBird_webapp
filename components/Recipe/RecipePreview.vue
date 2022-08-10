@@ -49,21 +49,21 @@
                     id='isVegan'
                     :value='"viande"'
                     :type=' "boolean" '
-                    :attribute='viande'
+                    :attribute='"viande"'
                 />
                 <PreviewValue 
                     v-show='recipe.isPorkFree' 
                     id='isPorkFree' 
                     :value='"porc"' 
                     :type=' "boolean" ' 
-                    :attribute='porc'
+                    :attribute='"porc"'
                 />
                 <PreviewValue 
                     v-show='recipe.isGlutenFree' 
                     id='isGlutenFree' 
                     :value='"gluten"' 
                     :type=' "boolean" ' 
-                    :attribute='gluten'
+                    :attribute='"gluten"'
                 />
             </ul>
         </div>
