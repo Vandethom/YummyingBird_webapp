@@ -12,13 +12,13 @@
 <script>
     export default {
         props: {
-            image : { type: String, required: true },
-            title: { type: String, required: true },
-            description: { type: String, required: true },
+            image : { type: String, default: '' },
+            title: { type: String, default: '' },
+            description: { type: String, default: '' },
             duration: { type: Number, required: true },
-            glutenfree: { type: Boolean, required: true },
-            porkfree: { type: Boolean, required: true },
-            vegan: { type: Boolean, required: true }
+            glutenfree: { type: Boolean },
+            porkfree: { type: Boolean },
+            vegan: { type: Boolean }
         }
     }
 </script>

@@ -2,7 +2,7 @@
     <div class='card-container'>
         <article v-for='recipe in recipes' :key='recipe.uuid'>
             <RecipeCard 
-                :title='recipe.title'
+                :title='recipe.name'
                 :description='recipe.description'
                 :duration='recipe.preparationTime'
                 :glutenfree='recipe.glutenFree'
@@ -28,13 +28,17 @@
             }
         },
         
-        beforeMount() {
-            this.$axios.$get('/recipes')
-                .then((res) => {
-                    const parsedData = JSON.parse(JSON.stringify(res))
-                    this.recipes = parsedData
-                    console.log(this.recipes)
-                })     
+        mounted() {
+            this.getAllRecipes()
+        },
+
+        methods: {
+            async getAllRecipes() {
+                const recipeList = await this.$api.getAllRecipes()
+                const parsedList = JSON.parse(JSON.stringify(recipeList.data))
+                
+                this.recipes = parsedList
+            }
         }
     }
 </script>

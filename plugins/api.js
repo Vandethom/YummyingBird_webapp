@@ -17,9 +17,8 @@ class Api {
   }
 
   async getAllRecipes () {
-    const recipes = await axios.get( 'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe' )
+    const recipes = await axios.get( 'https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipes' )
 
-    console.log( recipes )
     return recipes
   }
 }
