@@ -16,7 +16,7 @@
                 placeholder='Password'
                 class='form-control'
             />
-            <button type='submit' class='button--green'>Se connecter</button>
+            <button type='submit'>Se connecter</button>
             <p class='switch-popup' @click='displayPopUp("CONFIRM")'>Vérifier mon code</p>
             <p class='switch-popup' @click='displayPopUp("REGISTER")'>Créer un compte</p>
         </form>
@@ -34,7 +34,7 @@
                 placeholder='Password'
                 class='form-control'
             >
-            <button type='submit' class='button-green'>Créer un compte</button>
+            <button type='submit'>Créer un compte</button>
             <p class='switch-popup' @click='displayPopUp("CONFIRM")'>Vérifier mon code</p>
             <p class='switch-popup' @click='displayPopUp("LOGIN")'>Se connecter à un compte existant.</p>
         </form>
@@ -51,7 +51,7 @@
                 placeholder='Code'
                 class='form-control'
             >
-            <button type='submit' class='button-green'>Vérifier le code</button>
+            <button type='submit'>Vérifier le code</button>
             <p class='switch-popup' @click='displayPopUp("REGISTER")'>Créer un compte</p>
             <p class='switch-popup' @click='displayPopUp("LOGIN")'>Se connecter à un compte existant.</p>
         </form>
@@ -196,6 +196,7 @@
                 font-family: 'Barlow Condensed';
                 font-weight: bold;
                 font-size: 22px;
+                color: #2e0404;
 
                 &:first-of-type {
                     background: #5784BA;
@@ -204,6 +205,24 @@
                 &:nth-of-type(2) {
                     height: 30px;
                     background: #F7F6CF;
+                }
+
+                &:hover {
+                    background: linear-gradient(-45deg, #722665, #4822a1, #31afdd, #452add);
+	                background-size: 400% 400%;
+                    animation: gradient 5s ease infinite;
+                }
+
+                @keyframes gradient {
+                    0% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                    100% {
+                        background-position: 0% 50%;
+                    }
                 }
             }
         }
@@ -214,6 +233,8 @@
             color: #4422db;
         }
     }
+
+
 
     @media only screen and ( max-width: 1280px ) {
         .auth-modal {

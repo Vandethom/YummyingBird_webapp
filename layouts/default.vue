@@ -11,7 +11,7 @@
 </script>
 
 <style lang="scss" scoped>
-    content {
+    .content {
         margin: 0;
     }
 </style>
