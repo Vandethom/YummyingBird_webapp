@@ -21,6 +21,12 @@ class Api {
 
     return recipes
   }
+
+  async getRecipe ( uuid ) {
+    const recipe = await axios.get( `https://nl968j615m.execute-api.eu-west-3.amazonaws.com/dev/recipe/${uuid}` )
+
+    return recipe.data
+  }
 }
 
 export default ({ store }) => {
