@@ -8,6 +8,8 @@
             :cooking='recipe.cookingTime'
             :duration='recipe.durationTime'
             :parts='recipe.parts'
+            :ingredients='recipe.ingredients'
+            :steps='recipe.steps'
         />
         <!-- 
 
@@ -36,7 +38,8 @@ export default {
 
     data() {
         return {
-            recipe: {}
+            recipe: {},
+            ingredients: {}
         }
     },
 

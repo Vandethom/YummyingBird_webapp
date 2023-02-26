@@ -10,6 +10,14 @@
             <p>{{ parts }} personnes</p>
             <span>+</span>
         </div>
+        <h2>Ingrédients pour quatre personnes</h2>
+        <div v-for='ingredient in ingredients' :key='ingredient.uuid' class="ingredients">
+            <li>{{ ingredient.name }} : {{ ingredient.quantity }}</li>
+        </div>
+        <h2>Etapes de préparation</h2>
+        <ul v-for='step in steps' :key='step' class="steps">
+            <li>{{ step }}</li>
+        </ul>
     </div>
 </template>
 
@@ -28,9 +36,18 @@
                 type: Number,
                 default: 0
             },
+            ingredients: {
+                type: Array,
+                default() { 
+                    return [] }
+            },
             parts: {
                 type: Number,
                 default: 0
+            },
+            steps: {
+                type: Array,
+                default() { return [] }
             }
         }
     }
@@ -39,6 +56,11 @@
 <style lang="scss" scoped>
     .recipe-body {
         margin-left: 25%;
+        margin-right: 25%;
+
+        div {
+            margin: 2vh;
+        }
 
         .information-circle {
             width: 320px;
